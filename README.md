@@ -115,13 +115,10 @@ mkdir -p data
 ```
 
 ### Included Languages and Categories
-
 The `commands.json` file includes commands for the following languages and categories:
 
-### Included Languages and Categories
-
 <details>
-  <summary>Click to expand languages and categories</summary>
+  <summary><u><strong><em>Click to expand languages and categories</em></strong></u></summary
 
   #### Programming Languages:
   - Bash/Shell, C/C++, C#, Dart, Go, Java, JavaScript (Node.js), Lua, Perl, PHP, Python, Ruby, Rust, Swift
