@@ -115,7 +115,7 @@ mkdir -p data
 ```
 
 ### Included Languages and Categories
-The `commands.json` file includes commands for the following languages and categories:
+As of now `commands.json` file includes commands for a total of 168 languages and categories listed below:
 
 <details>
   <summary><u><strong><em>Click to expand languages and categories</em></strong></u></summary
