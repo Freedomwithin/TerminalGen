@@ -25,9 +25,9 @@ Never forget a command again!
 1.  **Clone the repository (if applicable):**
 
     ```bash
-    git clone https://github.com/Freedomwithin/cpp_terminal_commands.git
+    git clone https://github.com/Freedomwithin/TerminalGen
 
-    cd cpp_terminal_commands
+    cd TerminalGen
     ```
 
 2.  **Download the nlohmann/json library:**
