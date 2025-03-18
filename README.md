@@ -115,7 +115,7 @@ mkdir -p data
 ```
 
 ### Included Languages and Categories
-This repository contains a comprehensive list of **176 commands** across **169 languages and categories**, including:
+This repository contains a comprehensive list of **216 commands** across **175 languages and categories**, including:
 
 <details>
   <summary><u><strong><em>Click to expand languages and categories</em></strong></u></summary
