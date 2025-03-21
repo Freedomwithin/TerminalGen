@@ -4,7 +4,7 @@ A lightning-fast C++ command-line tool that puts hundreds of essential commands 
 
 ## Description
 
-Tired of searching for the right command? cpp_terminal_commands is your ultimate reference tool, giving you immediate access to a vast library of commands across multiple programming languages, package managers, networking tools, system utilities, and more.
+Tired of searching for the right command? TerminalGen is your ultimate reference tool, giving you immediate access to a vast library of commands across multiple programming languages, package managers, networking tools, system utilities, and more.
 
 Whether you're using the command-line interface (CLI) for quick lookups or the graphical user interface (GUI) for an interactive experience, this tool ensures you have tons of powerful commands just a search away.
 
