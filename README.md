@@ -65,8 +65,6 @@ mkdir -p data
 
 ## Usage
 
-## Usage
-
 ### Command-Line Interface (CLI)
 
 1. **Run the executable:**
