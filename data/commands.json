@@ -4191,5 +4191,161 @@
     "description": "Package manager for JavaScript",
     "usage": "yarn add <package>",
     "language": "javascript"
+  },
+  {
+    "name": "pkill",
+    "description": "Kill processes by name",
+    "usage": "pkill <process_name>",
+    "language": "bash"
+  },
+  {
+    "name": "pgrep",
+    "description": "Find process IDs by name",
+    "usage": "pgrep <process_name>",
+    "language": "bash"
+  },
+  {
+    "name": "nice",
+    "description": "Set process priority",
+    "usage": "nice -n 10 <command>",
+    "language": "bash"
+  },
+  {
+    "name": "watch",
+    "description": "Execute command periodically",
+    "usage": "watch -n 1 <command>",
+    "language": "bash"
+  },
+  {
+    "name": "dir",
+    "description": "List directory contents (Windows)",
+    "usage": "dir",
+    "language": "powershell"
+  },
+  {
+    "name": "cls",
+    "description": "Clear screen (Windows)",
+    "usage": "cls",
+    "language": "powershell"
+  },
+  {
+    "name": "Get-Process",
+    "description": "List running processes",
+    "usage": "Get-Process",
+    "language": "powershell"
+  },
+  {
+    "name": "Stop-Process",
+    "description": "Stop a process",
+    "usage": "Stop-Process <name>",
+    "language": "powershell"
+  },
+  {
+    "name": "xargs",
+    "description": "Build command line from input",
+    "usage": "find . -name '*.txt' | xargs grep 'pattern'",
+    "language": "bash"
+  },
+  {
+    "name": "gzip",
+    "description": "Compress files",
+    "usage": "gzip <file>",
+    "language": "bash"
+  },
+  {
+    "name": "gunzip",
+    "description": "Decompress gzipped files",
+    "usage": "gunzip <file>.gz",
+    "language": "bash"
+  },
+  {
+    "name": "python -m http.server",
+    "description": "Start simple HTTP server",
+    "usage": "python -m http.server 8000",
+    "language": "python"
+  },
+  {
+    "name": "black",
+    "description": "Format Python code",
+    "usage": "black .",
+    "language": "python"
+  },
+  {
+    "name": "pytest",
+    "description": "Run Python tests",
+    "usage": "pytest",
+    "language": "python"
+  },
+  {
+    "name": "deactivate",
+    "description": "Deactivate virtual environment",
+    "usage": "deactivate",
+    "language": "bash"
+  },
+  {
+    "name": "disown",
+    "description": "Remove job from shell job table",
+    "usage": "disown",
+    "language": "bash"
+  },
+  {
+    "name": "git bisect",
+    "description": "Find commit that broke something",
+    "usage": "git bisect start",
+    "language": "git"
+  },
+  {
+    "name": "helm",
+    "description": "Kubernetes package manager",
+    "usage": "helm install <release> <chart>",
+    "language": "kubernetes"
+  },
+  {
+    "name": "lshw",
+    "description": "List hardware configuration",
+    "usage": "lshw",
+    "language": "bash"
+  },
+  {
+    "name": "lsblk",
+    "description": "List block devices",
+    "usage": "lsblk",
+    "language": "bash"
+  },
+  {
+    "name": "pstree",
+    "description": "Display process tree",
+    "usage": "pstree",
+    "language": "bash"
+  },
+  {
+    "name": "pmap",
+    "description": "Display process memory map",
+    "usage": "pmap <pid>",
+    "language": "bash"
+  },
+  {
+    "name": "zip",
+    "description": "Compress files into zip archive",
+    "usage": "zip -r archive.zip <files>",
+    "language": "bash"
+  },
+  {
+    "name": "unzip",
+    "description": "Extract zip archives",
+    "usage": "unzip archive.zip",
+    "language": "bash"
+  },
+  {
+    "name": "nslookup",
+    "description": "Query DNS servers",
+    "usage": "nslookup example.com",
+    "language": "bash"
+  },
+  {
+    "name": "iotop",
+    "description": "Monitor disk I/O usage",
+    "usage": "iotop",
+    "language": "bash"
   }
 ]
