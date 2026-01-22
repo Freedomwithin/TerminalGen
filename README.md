@@ -1,10 +1,12 @@
-# TerminalGen ★ 1,024+ Commands
+# TerminalGen  1,024+ Commands
 
 **Lightning-fast C++ CLI** | **Neon Desktop GUI** | **Quantum Web GUI**  
 **Instant fuzzy search across 1,024+ devops commands** (bash/git/docker/k8s/aws/python/powershell)
 
 [![Vercel Demo](https://terminal-gen.vercel.app)](https://terminal-gen.vercel.app)
+
 [![Desktop GUI](https://img.shields.io/badge/GUI-Desktop%20Neon-blueviolet)](https://github.com/Freedomwithin/TerminalGen)
+
 [![Web GUI](https://img.shields.io/badge/Web-localhost:8501-neon)](https://github.com/Freedomwithin/TerminalGen)
 
 ##  One-Click Setup (30 seconds)
