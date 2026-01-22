@@ -1,72 +1,165 @@
 <!DOCTYPE html>
-<html><head><title>TerminalGen AI 2026</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>body{font-family:'Courier New',monospace}</style>
-</head><body class="bg-gradient-to-br from-black to-gray-900 text-green-400 min-h-screen">
-<div class="container mx-auto p-8 max-w-4xl">
-  <h1 class="text-4xl font-bold mb-8 text-green-400 border-b-2 border-green-400 pb-4">
-    🚀 TerminalGen AI 2026 - 626k+ Commands
-  </h1>
-  
-  <!-- Search Bar -->
-  <div class="mb-8">
-    <input id="search" placeholder="🔍 Search commands (name/description/usage)..." 
-           class="w-full p-4 bg-black border-2 border-green-400 text-green-400 rounded-lg text-xl focus:outline-none focus:border-green-200">
-    <div id="results" class="mt-4 hidden"></div>
-  </div>
-  
-  <!-- Terminal -->
-  <div class="bg-black border-2 border-green-400 rounded-lg p-6 mb-8 h-96 overflow-y-auto font-mono text-lg">
-    <div id="output">
-      <div class="text-yellow-400">TerminalGen v2.0 loaded. Type 'help' for demo.</div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 TerminalGen AI 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Fira Code', monospace;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0033 50%, #000428 100%);
+            color: #e0e0e0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .command-item {
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            border-left: 4px solid #00ffcc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .command-item:hover {
+            background: rgba(0,255,204,0.1);
+            transform: translateX(10px);
+        }
+        .terminal-box {
+            background: rgba(10, 10, 26, 0.95);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow-y: auto;
+            height: 70vh;
+            padding: 20px;
+            color: #00ffcc;
+            font-size: 14px;
+            line-height: 1.6;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
+        }
+        input[type=text] {
+            background: rgba(15, 15, 35, 0.8);
+            border: 2px solid transparent;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 25px;
+            width: 100%;
+            outline: none;
+        }
+        input[type=text]:focus {
+            border-color: #00ffcc;
+            box-shadow: 0 0 20px rgba(0,255,204,0.4);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0,255,204,0.4);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="p-6">
+    <div class="flex justify-between items-center mb-6 border-b border-cyan-400 pb-4">
+        <h1 class="text-2xl font-bold text-cyan-300">🤖 TerminalGen AI 2026</h1>
+        <div class="space-x-3">
+            <button onclick="listAll()" class="px-4 py-2 bg-green-900 text-green-300 rounded-lg border border-green-500 hover:bg-green-700">🌐 ALL</button>
+            <button onclick="clearAll()" class="px-4 py-2 bg-indigo-900 text-indigo-300 rounded-lg border border-indigo-500 hover:bg-indigo-700">🧹 CLEAR</button>
+        </div>
     </div>
-    <div class="flex mt-4">
-      <span class="text-green-400 mr-2">$</span>
-      <input id="input" class="flex-1 bg-transparent border-none outline-none text-green-400 text-lg" 
-             placeholder="Enter command..." autocomplete="off">
+    
+    <div class="mb-6">
+        <input id="search" type="text" placeholder="🔍 Search commands (name/desc/usage)..." oninput="liveSearch()">
     </div>
-  </div>
-  
-  <!-- Quick Actions -->
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-    <button onclick="runCmd('help')" class="p-3 bg-black border border-green-400 rounded hover:bg-green-900">help</button>
-    <button onclick="runCmd('ls')" class="p-3 bg-black border border-green-400 rounded hover:bg-green-900">ls</button>
-    <button onclick="runCmd('git status')" class="p-3 bg-black border border-green-400 rounded hover:bg-green-900">git</button>
-    <button onclick="clearOutput()" class="p-3 bg-black border border-green-400 rounded hover:bg-green-900">clear</button>
-  </div>
-</div>
 
-<script>
-let output=document.getElementById('output'),input=document.getElementById('input'),search=document.getElementById('search'),results=document.getElementById('results');
-const demoCommands = ['ls -la','git status','python --version','docker ps','npm list','cd src','pwd','whoami','ps aux','top','grep process','find . -name "*.py"'];
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-[rgba(26,26,46,0.85)] backdrop-blur-lg rounded-xl p-6">
+            <h2 class="text-lg text-green-400 font-semibold mb-4">📊 Quantum Matrix</h2>
+            <div id="commandList" class="overflow-y-auto" style="height:60vh;">
+                <div class="text-gray-500 text-center py-10">
+                    Enter a command to begin scan...
+                </div>
+            </div>
+        </div>
 
-// Search
-search.oninput = e => {
-  let q = e.target.value.toLowerCase();
-  if(q.length < 2) { results.classList.add('hidden'); return; }
-  let matches = demoCommands.filter(cmd => cmd.toLowerCase().includes(q));
-  results.innerHTML = matches.length ? 
-    matches.map(cmd => `<div class="p-2 bg-gray-900 border-l-4 border-green-400 cursor-pointer hover:bg-gray-800" onclick="runCmd('${cmd}')">${cmd}</div>`).join('') : 
-    '<div class="p-4 text-gray-500">No matches</div>';
-  results.classList.remove('hidden');
-};
+        <div class="bg-[rgba(26,26,46,0.85)] backdrop-blur-lg rounded-xl p-6">
+            <h2 class="text-lg text-pink-400 font-semibold mb-4">🤖 AI Terminal v2026</h2>
+            <div id="output" class="terminal-box mb-3">
+                🧠 Neural Network Ready. Type 'help' to start.
+            </div>
+            <div class="flex">
+                <span class="text-green-400 mr-2">$</span>
+                <input id="input" placeholder="Enter command..." onkeydown="if(event.key==='Enter') runCmd(input.value)">
+            </div>
+        </div>
+    </div>
 
-// Terminal
-input.onkeydown = e => e.key==='Enter' && runCmd(input.value);
-function runCmd(cmd) {
-  output.innerHTML += `<div class="mb-2"><span class="text-green-400">$</span> <span class="text-white">${cmd}</span></div>`;
-  setTimeout(() => {
-    output.innerHTML += `<div class="text-gray-400 ml-6">${demoOutput(cmd)}</div>`;
-    output.scrollTop = output.scrollHeight;
-  }, 200);
-  input.value = ''; search.value = '';
-  results.classList.add('hidden');
-}
-function demoOutput(cmd) {
-  if(cmd==='help') return 'Commands: ls, git, python, docker, npm, cd, pwd...';
-  if(cmd==='clear') { output.innerHTML=''; return ''; }
-  if(cmd==='ls') return './assets data/ templates/ gui.py web_gui.py main.cpp';
-  return `[demo] ${cmd} executed`;
-}
-function clearOutput() { output.innerHTML = '<div class="text-yellow-400">Terminal cleared.</div>'; }
-</script></body></html>
+    <script>
+        const demoCommands = [
+            { name: 'ls -la', description: 'List directory contents', usage: 'ls -la', language: 'bash' },
+            { name: 'git status', description: 'Show Git repo state', usage: 'git status', language: 'git' },
+            { name: 'npm install', description: 'Install Node packages', usage: 'npm install', language: 'node' },
+            { name: 'docker ps', description: 'List Docker containers', usage: 'docker ps', language: 'docker' },
+            { name: 'python --version', description: 'Show Python version', usage: 'python --version', language: 'python' },
+        ];
+
+        function liveSearch() {
+            const q = document.getElementById('search').value.toLowerCase();
+            const list = document.getElementById('commandList');
+            list.innerHTML = '';
+
+            const matches = demoCommands.filter(cmd =>
+                cmd.name.toLowerCase().includes(q) ||
+                cmd.description.toLowerCase().includes(q) ||
+                cmd.usage.toLowerCase().includes(q)
+            );
+
+            if (!matches.length) {
+                list.innerHTML = '<div class="text-gray-500 text-center py-10">No matches</div>';
+                return;
+            }
+
+            matches.forEach(cmd => {
+                const div = document.createElement('div');
+                div.className = 'command-item';
+                div.innerHTML = `<span style="color:#00ffcc">${cmd.language}</span> ${cmd.name}`;
+                div.onclick = () => showDetails(cmd);
+                list.appendChild(div);
+            });
+        }
+
+        function showDetails(cmd) {
+            output.innerHTML += `
+            <div class="mt-2"><span class="text-green-400">$</span> ${cmd.name}</div>
+            <div class="text-gray-400 ml-6">💭 ${cmd.description}</div>
+            <div class="text-gray-400 ml-6">💻 ${cmd.usage}</div>
+            `;
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function listAll() {
+            document.getElementById('search').value = '';
+            liveSearch();
+        }
+
+        function clearAll() {
+            document.getElementById('commandList').innerHTML = '<div class="text-gray-500 text-center py-10">Matrix cleared</div>';
+            document.getElementById('output').innerHTML = '🧠 Neural terminal reset.';
+            document.getElementById('search').value = '';
+        }
+
+        function runCmd(cmd) {
+            if (!cmd.trim()) return;
+            output.innerHTML += `<div class="mt-1"><span class="text-green-400">$</span> <span class="text-white">${cmd}</span></div>`;
+            setTimeout(() => {
+                output.innerHTML += `<div class="text-gray-400 ml-6">[demo] ${cmd} executed</div>`;
+                output.scrollTop = output.scrollHeight;
+            }, 200);
+            input.value = '';
+        }
+    </script>
+</body>
+</html>
