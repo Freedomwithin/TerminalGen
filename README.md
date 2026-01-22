@@ -5,10 +5,6 @@
 
 [![**Vercel Demo**](https://terminal-gen.vercel.app)](https://terminal-gen.vercel.app)
 
-[![Desktop GUI](https://img.shields.io/badge/GUI-Desktop%20Neon-blueviolet)](https://github.com/Freedomwithin/TerminalGen)
-
-[![Web GUI](https://img.shields.io/badge/Web-localhost:8501-neon)](https://github.com/Freedomwithin/TerminalGen)
-
 ##  One-Click Setup (30 seconds)
 
 ```bash
