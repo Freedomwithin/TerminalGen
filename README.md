@@ -5,6 +5,7 @@
 **Instant fuzzy search across 1,024+ devops commands (bash/git/docker/k8s/aws/python/powershell).
 Replaces tldr/cheat.sh with 1000x speed + native Windows support. Search "docker", get every command instantly. Click to execute fully online, and a recent release with windows.exe install**
 
+## Click the image to see the demo!
 [![TerminalGen demo picture](https://github.com/user-attachments/assets/48a0dc55-2d9c-4422-866c-ab5b34a8ba30)](https://terminal-moyt0r11s-jonathon-koerners-projects.vercel.app/)
 
 ## One-Click Setup (30 seconds)
