@@ -248,7 +248,7 @@
             searchTimeout = setTimeout(liveSearch, 150);
         }
 
-        // 🔥 FULL 626K DATASET SEARCH (JS) - SAFE VERSION
+        // 🔥 NEW LIVESEARCH - EXACTLY AS REQUESTED
         function liveSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const list = document.getElementById('commandList');
@@ -256,14 +256,14 @@
             let matches = 0;
             
             if (query && allCommands.length > 0) {
-                // 🚀 SEARCH FULL 626K DATASET (SAFE)
                 const results = allCommands.filter(cmd => 
-                    // ✅ SAFE CHECKS - skip invalid entries
-                    cmd && cmd.name && cmd.description && cmd.usage && cmd.language &&
+                    cmd && 
+                    cmd.name && typeof cmd.name === 'string' &&
+                    cmd.language && typeof cmd.language === 'string' &&
                     (
                         cmd.name.toLowerCase().includes(query) ||
-                        cmd.description.toLowerCase().includes(query) ||
-                        cmd.usage.toLowerCase().includes(query) ||
+                        (cmd.description && cmd.description.toLowerCase().includes(query)) ||
+                        (cmd.usage && cmd.usage.toLowerCase().includes(query)) ||
                         cmd.language.toLowerCase().includes(query)
                     )
                 ).slice(0, 25);
@@ -278,9 +278,8 @@
                     matches++;
                 });
             } else if (allCommands.length > 0) {
-                // Empty query = top 25 VALID entries only
                 allCommands.slice(0, 25).forEach((cmd, idx) => {
-                    if (cmd && cmd.name && cmd.language) {  // ✅ SAFE CHECK
+                    if (cmd && cmd.name && cmd.language && typeof cmd.name === 'string') {
                         const item = document.createElement('div');
                         item.className = 'command-item';
                         item.innerHTML = `<span style="color:#00ffcc">${cmd.language.toUpperCase()}</span> ${cmd.name}`;
