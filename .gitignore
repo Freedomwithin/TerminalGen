@@ -2,3 +2,15 @@ venv/
 __pycache__/
 *.pyc
 *.command
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs (except final .exe for releases)
+dist/win-unpacked/
+dist/*.blockmap
+
+# Logs and temp
+*.log
+.env
+.DS_Store

@@ -1,0 +1,27 @@
+{
+  "name": "terminalgen-ai-2026",
+  "version": "1.0.0",
+  "description": "🤖 TerminalGen AI 2026 - 1,500 Command Database",
+  "author": "Your Name",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest"
+  },
+  "build": {
+    "appId": "com.terminalgen.ai2026",
+    "productName": "TerminalGen AI 2026",
+    "files": [
+      "main.js",
+      "index.html",
+      "data/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    }
+  }
+}

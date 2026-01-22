@@ -199,8 +199,8 @@
                     <div class="terminal-output" id="terminalOutput">
 ╔══════════════════════════════════════════════════════╗
 ║  🧠 NEURAL NETWORK READY                             ║
-║  💾 Loading 626k command database...                 ║
-║  ⚡ JS search engine initializing...                  ║
+║  💾 Loading 1,500 commmand database...                 ║
+║  ⚡ JS search engine initialized...                  ║
 ╚══════════════════════════════════════════════════════╝
                     </div>
                     <div class="terminal-input">
@@ -213,19 +213,19 @@
         </div>
         
         <div class="status">
-            <span id="statusText">🧬 Initializing 626k dataset...</span>
+            <span id="statusText">🧬 Initializing 1,500 dataset...</span>
         </div>
     </div>
 
     <script>
         let allCommands = [];
 
-        // ✅ FIXED PATH - Vercel correct: './data/commands.json'
-        fetch('./data/commands.json').then(r => r.json()).then(commands => {
+        // 🔥 INITIAL LOAD (JSON dataset) - FIXED PATH
+        fetch('data/commands.json').then(r => r.json()).then(commands => {
             allCommands = commands;
             document.getElementById('statusText').textContent = 
                 `🧬 READY - ${allCommands.length.toLocaleString()} quantum nodes synchronized`;
-            document.getElementById('terminalOutput').innerHTML += `\n✅ Full 626k dataset loaded!`;
+            document.getElementById('terminalOutput').innerHTML += `\n✅ Full 1,500k dataset loaded!`;
             liveSearch();
         }).catch(() => {
             // ✅ FALLBACK DATASET
@@ -248,7 +248,7 @@
             searchTimeout = setTimeout(liveSearch, 150);
         }
 
-        // 🔥 FIXED: BULLETPROOF LIVESEARCH - SAFE NULL CHECKS EVERYWHERE
+        // 🔥 FULL 626K DATASET SEARCH (JS) - SAFE VERSION
         function liveSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const list = document.getElementById('commandList');
@@ -256,46 +256,34 @@
             let matches = 0;
             
             if (query && allCommands.length > 0) {
-                const results = allCommands.filter(cmd => {
-                    // 🔥 BULLETPROOF - handles ALL undefined/null/empty cases
-                    if (!cmd || typeof cmd !== 'object') return false;
-                    
-                    const name = cmd.name || '';
-                    const desc = cmd.description || '';
-                    const usage = cmd.usage || '';
-                    const lang = cmd.language || '';
-                    
-                    try {
-                        const q = query.toLowerCase();
-                        return name.toLowerCase().includes(q) ||
-                               desc.toLowerCase().includes(q) ||
-                               usage.toLowerCase().includes(q) ||
-                               lang.toLowerCase().includes(q);
-                    } catch(e) {
-                        return false;
-                    }
-                }).slice(0, 25);
+                // 🚀 SEARCH FULL 626K DATASET (SAFE)
+                const results = allCommands.filter(cmd => 
+                    // ✅ SAFE CHECKS - skip invalid entries
+                    cmd && cmd.name && cmd.description && cmd.usage && cmd.language &&
+                    (
+                        cmd.name.toLowerCase().includes(query) ||
+                        cmd.description.toLowerCase().includes(query) ||
+                        cmd.usage.toLowerCase().includes(query) ||
+                        cmd.language.toLowerCase().includes(query)
+                    )
+                ).slice(0, 25);
 
                 results.forEach((cmd, idx) => {
-                    if (cmd && cmd.name) {
-                        const item = document.createElement('div');
-                        item.className = 'command-item';
-                        const safeLang = cmd.language ? cmd.language.toUpperCase() : 'CLI';
-                        item.innerHTML = `<span style="color:#00ffcc">${safeLang}</span> ${cmd.name}`;
-                        item.onclick = () => showDetails(cmd);
-                        item.style.animationDelay = `${idx * 0.05}s`;
-                        list.appendChild(item);
-                        matches++;
-                    }
+                    const item = document.createElement('div');
+                    item.className = 'command-item';
+                    item.innerHTML = `<span style="color:#00ffcc">${cmd.language.toUpperCase()}</span> ${cmd.name}`;
+                    item.onclick = () => showDetails(cmd);
+                    item.style.animationDelay = `${idx * 0.05}s`;
+                    list.appendChild(item);
+                    matches++;
                 });
             } else if (allCommands.length > 0) {
-                // Show top 25 commands when no search
+                // Empty query = top 25 VALID entries only
                 allCommands.slice(0, 25).forEach((cmd, idx) => {
-                    if (cmd && cmd.name && typeof cmd === 'object') {
+                    if (cmd && cmd.name && cmd.language) {  // ✅ SAFE CHECK
                         const item = document.createElement('div');
                         item.className = 'command-item';
-                        const safeLang = cmd.language ? cmd.language.toUpperCase() : 'CLI';
-                        item.innerHTML = `<span style="color:#00ffcc">${safeLang}</span> ${cmd.name}`;
+                        item.innerHTML = `<span style="color:#00ffcc">${cmd.language.toUpperCase()}</span> ${cmd.name}`;
                         item.onclick = () => showDetails(cmd);
                         item.style.animationDelay = `${idx * 0.05}s`;
                         list.appendChild(item);
