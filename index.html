@@ -1,314 +1,72 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🤖 TerminalGen AI 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Fira Code', monospace;
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a0033 50%, #000428 100%);
-            height: 100vh;
-            overflow: hidden;
-            color: #e0e0e0;
-        }
-        .container {
-            display: grid;
-            grid-template-rows: 60px 70px 1fr 30px;
-            height: 100vh;
-            gap: 0;
-        }
-        .header {
-            background: rgba(10,10,26,0.95);
-            backdrop-filter: blur(20px);
-            display: flex;
-            align-items: center;
-            padding: 0 30px;
-            border-bottom: 1px solid rgba(0,255,204,0.3);
-        }
-        .title {
-            font-size: 28px;
-            font-weight: 600;
-            background: linear-gradient(45deg, #00ffcc, #00d4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0,255,204,0.5);
-        }
-        .search-container {
-            background: rgba(26,26,46,0.9);
-            backdrop-filter: blur(25px);
-            padding: 20px 30px;
-            border-bottom: 1px solid rgba(0,255,204,0.2);
-        }
-        .search-box {
-            width: 100%;
-            max-width: 800px;
-            height: 50px;
-            padding: 0 20px;
-            border: 2px solid transparent;
-            border-radius: 25px;
-            background: rgba(15,15,35,0.8);
-            color: #fff;
-            font-size: 16px;
-            font-family: 'Fira Code', monospace;
-            outline: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        }
-        .search-box:focus {
-            border-color: #00ffcc;
-            box-shadow: 0 0 30px rgba(0,255,204,0.4);
-            transform: translateY(-2px);
-        }
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding: 30px;
-            height: calc(100% - 20px);
-        }
-        .panel {
-            background: rgba(26,26,46,0.85);
-            backdrop-filter: blur(30px);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
-        }
-        .panel:hover {
-            transform: translateY(-5px);
-        }
-        .panel-header {
-            padding: 25px 30px;
-            font-size: 18px;
-            font-weight: 600;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .matrix-header { color: #00ff88; }
-        .terminal-header { color: #ff0080; }
-        .content {
-            height: calc(100% - 70px);
-            padding: 25px 30px;
-            overflow-y: auto;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .command-item {
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 12px;
-            border-left: 4px solid #00ffcc;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: slideIn 0.5s ease forwards;
-        }
-        .command-item:hover {
-            background: rgba(0,255,204,0.1);
-            transform: translateX(10px);
-            box-shadow: 0 5px 20px rgba(0,255,204,0.2);
-        }
-        .command-item.selected {
-            background: rgba(0,255,204,0.2);
-            border-left-color: #ff0080;
-        }
-        @keyframes slideIn {
-            to { opacity: 1; transform: translateX(0); }
-        }
-        .terminal-output {
-            background: rgba(0,0,0,0.6);
-            border-radius: 10px;
-            padding: 20px;
-            font-family: 'Fira Code', monospace;
-            white-space: pre-wrap;
-            line-height: 1.7;
-        }
-        .status {
-            background: rgba(10,10,26,0.95);
-            backdrop-filter: blur(20px);
-            padding: 10px 30px;
-            font-size: 14px;
-            border-top: 1px solid rgba(0,255,204,0.2);
-        }
-        .buttons {
-            position: fixed;
-            top: 80px;
-            right: 30px;
-            display: flex;
-            gap: 15px;
-        }
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            font-family: 'Fira Code', monospace;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            backdrop-filter: blur(20px);
-        }
-        .btn-all { background: rgba(0,255,136,0.2); color: #00ff88; border: 2px solid #00ff88; }
-        .btn-cli { background: rgba(255,0,128,0.2); color: #ff0080; border: 2px solid #ff0080; }
-        .btn-clear { background: rgba(102,102,255,0.2); color: #6666ff; border: 2px solid #6666ff; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.2);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0,255,204,0.4);
-            border-radius: 4px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <div class="title">🤖 TerminalGen AI 2026</div>
-        </div>
-        
-        <div class="buttons">
-            <button class="btn btn-all" onclick="listAll()">🌐 ALL</button>
-            <button class="btn btn-cli" onclick="runCLI()">⚡ CLI</button>
-            <button class="btn btn-clear" onclick="clearAll()">🧹 CLEAR</button>
-        </div>
-        
-        <div class="search-container">
-            <input type="text" class="search-box" id="searchInput" 
-                   placeholder="🔍 Search git, docker, aws, kubectl... (live search)" 
-                   oninput="liveSearch()">
-        </div>
-        
-        <div class="main-content">
-            <div class="panel">
-                <div class="panel-header matrix-header">📊 QUANTUM MATRIX</div>
-                <div class="content" id="commandList">
-                    <div style="color:#888; text-align:center; padding:50px;">
-                        Enter command name to begin neural scan...
-                    </div>
-                </div>
-            </div>
-            <div class="panel">
-                <div class="panel-header terminal-header">🤖 AI TERMINAL v2026</div>
-                <div class="content">
-                    <div class="terminal-output" id="terminalOutput">
-╔══════════════════════════════════════════════════════╗
-║  🧠 NEURAL NETWORK READY                             ║
-║  💾 {len(commands)} quantum nodes loaded               ║
-║  ⚡ Live CLI integration active                      ║
-╚══════════════════════════════════════════════════════╝
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="status">
-            <span id="statusText">🧬 Ready - 216 quantum nodes synchronized</span>
-        </div>
+<html><head><title>TerminalGen AI 2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>body{font-family:'Courier New',monospace}</style>
+</head><body class="bg-gradient-to-br from-black to-gray-900 text-green-400 min-h-screen">
+<div class="container mx-auto p-8 max-w-4xl">
+  <h1 class="text-4xl font-bold mb-8 text-green-400 border-b-2 border-green-400 pb-4">
+    🚀 TerminalGen AI 2026 - 626k+ Commands
+  </h1>
+  
+  <!-- Search Bar -->
+  <div class="mb-8">
+    <input id="search" placeholder="🔍 Search commands (name/description/usage)..." 
+           class="w-full p-4 bg-black border-2 border-green-400 text-green-400 rounded-lg text-xl focus:outline-none focus:border-green-200">
+    <div id="results" class="mt-4 hidden"></div>
+  </div>
+  
+  <!-- Terminal -->
+  <div class="bg-black border-2 border-green-400 rounded-lg p-6 mb-8 h-96 overflow-y-auto font-mono text-lg">
+    <div id="output">
+      <div class="text-yellow-400">TerminalGen v2.0 loaded. Type 'help' for demo.</div>
     </div>
+    <div class="flex mt-4">
+      <span class="text-green-400 mr-2">$</span>
+      <input id="input" class="flex-1 bg-transparent border-none outline-none text-green-400 text-lg" 
+             placeholder="Enter command..." autocomplete="off">
+    </div>
+  </div>
+  
+  <!-- Quick Actions -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+    <button onclick="runCmd('help')" class="p-3 bg-black border border-green-400 rounded hover:bg-green-900">help</button>
+    <button onclick="runCmd('ls')" class="p-3 bg-black border border-green-400 rounded hover:bg-green-900">ls</button>
+    <button onclick="runCmd('git status')" class="p-3 bg-black border border-green-400 rounded hover:bg-green-900">git</button>
+    <button onclick="clearOutput()" class="p-3 bg-black border border-green-400 rounded hover:bg-green-900">clear</button>
+  </div>
+</div>
 
-    <script>
-let COMMANDS = [];
+<script>
+let output=document.getElementById('output'),input=document.getElementById('input'),search=document.getElementById('search'),results=document.getElementById('results');
+const demoCommands = ['ls -la','git status','python --version','docker ps','npm list','cd src','pwd','whoami','ps aux','top','grep process','find . -name "*.py"'];
 
-async function fetchAllCommands() {
-    try {
-        const response = await fetch('/search?q=');
-        COMMANDS = await response.json();
-        liveSearch();
-    } catch(e) {
-        console.log('API ready');
-        liveSearch();
-    }
+// Search
+search.oninput = e => {
+  let q = e.target.value.toLowerCase();
+  if(q.length < 2) { results.classList.add('hidden'); return; }
+  let matches = demoCommands.filter(cmd => cmd.toLowerCase().includes(q));
+  results.innerHTML = matches.length ? 
+    matches.map(cmd => `<div class="p-2 bg-gray-900 border-l-4 border-green-400 cursor-pointer hover:bg-gray-800" onclick="runCmd('${cmd}')">${cmd}</div>`).join('') : 
+    '<div class="p-4 text-gray-500">No matches</div>';
+  results.classList.remove('hidden');
+};
+
+// Terminal
+input.onkeydown = e => e.key==='Enter' && runCmd(input.value);
+function runCmd(cmd) {
+  output.innerHTML += `<div class="mb-2"><span class="text-green-400">$</span> <span class="text-white">${cmd}</span></div>`;
+  setTimeout(() => {
+    output.innerHTML += `<div class="text-gray-400 ml-6">${demoOutput(cmd)}</div>`;
+    output.scrollTop = output.scrollHeight;
+  }, 200);
+  input.value = ''; search.value = '';
+  results.classList.add('hidden');
 }
-
-function liveSearch() {
-    const query = document.getElementById('searchInput').value.toLowerCase();
-    const list = document.getElementById('commandList');
-    
-    list.innerHTML = '';
-    let matches = 0;
-    
-    COMMANDS.forEach((cmd, idx) => {
-        if (query === '' || 
-            cmd.name.toLowerCase().includes(query) || 
-            cmd.description.toLowerCase().includes(query) ||
-            cmd.usage.toLowerCase().includes(query)) {
-            
-            const score = (cmd.name.toLowerCase().includes(query) ? 3 : 0) +
-                         (cmd.description.toLowerCase().includes(query) ? 2 : 0) +
-                         (cmd.usage.toLowerCase().includes(query) ? 1 : 0);
-            
-            const confidence = '█'.repeat(Math.min(9, score*3)) + '░'.repeat(9-Math.min(9, score*3));
-            const item = document.createElement('div');
-            item.className = 'command-item';
-            item.innerHTML = `<span style="color:#00ffcc">${cmd.language || 'CORE'}</span> ${cmd.name}`;
-            item.onclick = () => showDetails(cmd);
-            item.style.animationDelay = `${matches * 0.05}s`;
-            list.appendChild(item);
-            matches++;
-        }
-    });
-    
-    document.getElementById('statusText').textContent = 
-        `🧠 Neural matches: ${matches} | Live pattern recognition active`;
+function demoOutput(cmd) {
+  if(cmd==='help') return 'Commands: ls, git, python, docker, npm, cd, pwd...';
+  if(cmd==='clear') { output.innerHTML=''; return ''; }
+  if(cmd==='ls') return './assets data/ templates/ gui.py web_gui.py main.cpp';
+  return `[demo] ${cmd} executed`;
 }
-
-function showDetails(cmd) {
-    const terminal = document.getElementById('terminalOutput');
-    terminal.innerHTML = `
-╔══════════════════════════════════════════════════════╗
-║  🤖 AI COMMAND ANALYSIS ENGINE v2026                  ║
-╠══════════════════════════════════════════════════════║
-║  🧬 TARGET: ${cmd.name.toUpperCase().padEnd(35)}          ║
-║  🌐 VECTOR: ${(cmd.language || 'QUANTUM').padEnd(35)}    ║
-║  📊 CONFIDENCE: ██████████100%                        ║
-╠══════════════════════════════════════════════════════║
-║  💭 INTELLIGENCE:                                      ║
-║     ${cmd.description.padEnd(52)}                       ║
-║                                                       ║
-║  💻 EXECUTION MATRIX:                                 ║
-║     ${cmd.usage.padEnd(52)}                            ║
-╚══════════════════════════════════════════════════════╝
-    `;
-}
-
-function listAll() {
-    document.getElementById('searchInput').value = '';
-    liveSearch();
-}
-
-function runCLI() {
-    const query = document.getElementById('searchInput').value;
-    if (!query) return;
-    
-    fetch(`/cli?q=${encodeURIComponent(query)}`)
-        .then(r => r.json())
-        .then(data => {
-            document.getElementById('terminalOutput').textContent = 
-                `⚡ LIVE CLI EXECUTION:\n\n${data.output}`;
-        }).catch(e => {
-            document.getElementById('terminalOutput').textContent = '⚠️ CLI Error';
-        });
-}
-
-function clearAll() {
-    document.getElementById('searchInput').value = '';
-    document.getElementById('commandList').innerHTML = 
-        '<div style="color:#888; text-align:center; padding:50px;">Neural matrix cleared</div>';
-    document.getElementById('terminalOutput').textContent = 
-        '🧠 Neural matrix cleared - Ready for quantum scan';
-    document.getElementById('statusText').textContent = '🧬 Ready';
-}
-
-// Load on start
-fetchAllCommands();
-    </script>
-</body>
-</html>
+function clearOutput() { output.innerHTML = '<div class="text-yellow-400">Terminal cleared.</div>'; }
+</script></body></html>
