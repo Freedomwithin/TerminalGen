@@ -220,7 +220,7 @@
     <script>
         let allCommands = [];
 
-        // 🔥 INITIAL LOAD (JSON dataset) - VERCEL CORRECTED PATH
+        // ✅ FIXED PATH - Vercel correct: './data/commands.json'
         fetch('./data/commands.json').then(r => r.json()).then(commands => {
             allCommands = commands;
             document.getElementById('statusText').textContent = 
@@ -248,7 +248,7 @@
             searchTimeout = setTimeout(liveSearch, 150);
         }
 
-        // 🔥 BULLETPROOF LIVESEARCH - EXACTLY AS REQUESTED
+        // 🔥 FIXED: BULLETPROOF LIVESEARCH - SAFE NULL CHECKS EVERYWHERE
         function liveSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const list = document.getElementById('commandList');
@@ -257,35 +257,45 @@
             
             if (query && allCommands.length > 0) {
                 const results = allCommands.filter(cmd => {
-                    // 🔥 BULLETPROOF - handles ALL undefined/null cases
-                    if (!cmd || !cmd.name) return false;
+                    // 🔥 BULLETPROOF - handles ALL undefined/null/empty cases
+                    if (!cmd || typeof cmd !== 'object') return false;
+                    
+                    const name = cmd.name || '';
+                    const desc = cmd.description || '';
+                    const usage = cmd.usage || '';
+                    const lang = cmd.language || '';
+                    
                     try {
-                        return cmd.name.toLowerCase().includes(query) ||
-                               (cmd.description && cmd.description.toLowerCase().includes(query)) ||
-                               (cmd.usage && cmd.usage.toLowerCase().includes(query)) ||
-                               (cmd.language && cmd.language.toLowerCase().includes(query));
+                        const q = query.toLowerCase();
+                        return name.toLowerCase().includes(q) ||
+                               desc.toLowerCase().includes(q) ||
+                               usage.toLowerCase().includes(q) ||
+                               lang.toLowerCase().includes(q);
                     } catch(e) {
                         return false;
                     }
                 }).slice(0, 25);
 
                 results.forEach((cmd, idx) => {
-                    const item = document.createElement('div');
-                    item.className = 'command-item';
-                    // ✅ FIXED: SAFE language display
-                    item.innerHTML = `<span style="color:#00ffcc">${cmd.language ? cmd.language.toUpperCase() : 'UNK'}</span> ${cmd.name}`;
-                    item.onclick = () => showDetails(cmd);
-                    item.style.animationDelay = `${idx * 0.05}s`;
-                    list.appendChild(item);
-                    matches++;
-                });
-            } else if (allCommands.length > 0) {
-                allCommands.slice(0, 25).forEach((cmd, idx) => {
-                    if (cmd && cmd.name && cmd.language) {
+                    if (cmd && cmd.name) {
                         const item = document.createElement('div');
                         item.className = 'command-item';
-                        // ✅ FIXED: SAFE language display
-                        item.innerHTML = `<span style="color:#00ffcc">${cmd.language ? cmd.language.toUpperCase() : 'UNK'}</span> ${cmd.name}`;
+                        const safeLang = cmd.language ? cmd.language.toUpperCase() : 'CLI';
+                        item.innerHTML = `<span style="color:#00ffcc">${safeLang}</span> ${cmd.name}`;
+                        item.onclick = () => showDetails(cmd);
+                        item.style.animationDelay = `${idx * 0.05}s`;
+                        list.appendChild(item);
+                        matches++;
+                    }
+                });
+            } else if (allCommands.length > 0) {
+                // Show top 25 commands when no search
+                allCommands.slice(0, 25).forEach((cmd, idx) => {
+                    if (cmd && cmd.name && typeof cmd === 'object') {
+                        const item = document.createElement('div');
+                        item.className = 'command-item';
+                        const safeLang = cmd.language ? cmd.language.toUpperCase() : 'CLI';
+                        item.innerHTML = `<span style="color:#00ffcc">${safeLang}</span> ${cmd.name}`;
                         item.onclick = () => showDetails(cmd);
                         item.style.animationDelay = `${idx * 0.05}s`;
                         list.appendChild(item);
