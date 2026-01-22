@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>WASM Test</title></head>
+<body>
+<script src="parser.js"></script>
+<script>
+  Module().then(function(ModuleInstance) {
+    console.log('WASM loaded!');
+    const search = ModuleInstance.cwrap('search_commands', 'string', ['string']);
+    
+    console.log('git:', search('git'));
+    console.log('docker:', search('docker'));
+    console.log('random:', search('xyz'));
+  });
+</script>
+</body>
+</html>

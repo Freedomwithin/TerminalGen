@@ -196,13 +196,11 @@
             <div class="panel">
                 <div class="panel-header terminal-header">🤖 AI TERMINAL v2026</div>
                 <div class="content">
-                    <div class="terminal-output" id="terminalOutput">
-╔══════════════════════════════════════════════════════╗
+                    <div class="terminal-output" id="terminalOutput">╔══════════════════════════════════════════════════════╗
 ║  🧠 NEURAL NETWORK READY                             ║
 ║  💾 Loading 626k command database...                 ║
 ║  ⚡ JS search engine initializing...                  ║
-╚══════════════════════════════════════════════════════╝
-                    </div>
+╚══════════════════════════════════════════════════════╝</div>
                     <div class="terminal-input">
                         <span class="prompt">$</span>
                         <input id="terminalInput" placeholder="Type command or click from matrix..." 
@@ -220,26 +218,15 @@
     <script>
         let allCommands = [];
 
-        // 🔥 INITIAL LOAD (JSON dataset) - FIXED PATH
-        fetch('public/data/commands.json').then(r => r.json()).then(commands => {
+        // 🔥 INITIAL LOAD (JSON dataset)
+        fetch('data/commands.json').then(r => r.json()).then(commands => {
             allCommands = commands;
             document.getElementById('statusText').textContent = 
                 `🧬 READY - ${allCommands.length.toLocaleString()} quantum nodes synchronized`;
             document.getElementById('terminalOutput').innerHTML += `\n✅ Full 626k dataset loaded!`;
             liveSearch();
         }).catch(() => {
-            // ✅ FALLBACK DATASET
-            allCommands = [
-                {"name": "git status", "description": "Check git status", "usage": "git status", "language": "Git"},
-                {"name": "docker ps", "description": "List containers", "usage": "docker ps", "language": "Docker"},
-                {"name": "kubectl get pods", "description": "List pods", "usage": "kubectl get pods", "language": "Kubernetes"},
-                {"name": "npm install", "description": "Install packages", "usage": "npm install", "language": "NPM"},
-                {"name": "aws s3 ls", "description": "List S3 buckets", "usage": "aws s3 ls", "language": "AWS"}
-            ];
-            document.getElementById('statusText').textContent = 
-                `🧬 READY - ${allCommands.length} demo nodes (JSON failed to load)`;
-            document.getElementById('terminalOutput').innerHTML += `\n✅ Demo dataset loaded!`;
-            liveSearch();
+            document.getElementById('statusText').textContent = '⚠️ Failed to load dataset';
         });
 
         let searchTimeout;
@@ -248,7 +235,7 @@
             searchTimeout = setTimeout(liveSearch, 150);
         }
 
-        // 🔥 FULL 626K DATASET SEARCH (JS) - SAFE VERSION
+        // 🔥 FULL 626K DATASET SEARCH (JS) - FIXED FIELD NAMES
         function liveSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const list = document.getElementById('commandList');
@@ -256,16 +243,12 @@
             let matches = 0;
             
             if (query && allCommands.length > 0) {
-                // 🚀 SEARCH FULL 626K DATASET (SAFE)
+                // 🚀 SEARCH FULL 626K DATASET
                 const results = allCommands.filter(cmd => 
-                    // ✅ SAFE CHECKS - skip invalid entries
-                    cmd && cmd.name && cmd.description && cmd.usage && cmd.language &&
-                    (
-                        cmd.name.toLowerCase().includes(query) ||
-                        cmd.description.toLowerCase().includes(query) ||
-                        cmd.usage.toLowerCase().includes(query) ||
-                        cmd.language.toLowerCase().includes(query)
-                    )
+                    cmd.name.toLowerCase().includes(query) ||
+                    cmd.description.toLowerCase().includes(query) ||
+                    cmd.usage.toLowerCase().includes(query) ||
+                    cmd.language.toLowerCase().includes(query)  // ✅ FIXED FIELD
                 ).slice(0, 25);
 
                 results.forEach((cmd, idx) => {
@@ -278,17 +261,15 @@
                     matches++;
                 });
             } else if (allCommands.length > 0) {
-                // Empty query = top 25 VALID entries only
+                // Empty query = top 25
                 allCommands.slice(0, 25).forEach((cmd, idx) => {
-                    if (cmd && cmd.name && cmd.language) {  // ✅ SAFE CHECK
-                        const item = document.createElement('div');
-                        item.className = 'command-item';
-                        item.innerHTML = `<span style="color:#00ffcc">${cmd.language.toUpperCase()}</span> ${cmd.name}`;
-                        item.onclick = () => showDetails(cmd);
-                        item.style.animationDelay = `${idx * 0.05}s`;
-                        list.appendChild(item);
-                        matches++;
-                    }
+                    const item = document.createElement('div');
+                    item.className = 'command-item';
+                    item.innerHTML = `<span style="color:#00ffcc">${cmd.language.toUpperCase()}</span> ${cmd.name}`;
+                    item.onclick = () => showDetails(cmd);
+                    item.style.animationDelay = `${idx * 0.05}s`;
+                    list.appendChild(item);
+                    matches++;
                 });
             }
             
@@ -300,8 +281,6 @@
             if(cmd.includes('git status')) return 'On branch main\nYour branch is up to date\nNo pending changes';
             if(cmd.includes('docker ps')) return 'CONTAINER ID   IMAGE     STATUS\nabc123def456   nginx     Up 2 hours';
             if(cmd.includes('kubectl get pods')) return 'NAME           READY   STATUS\nweb-pod-xyz    1/1     Running';
-            if(cmd.includes('npm install')) return 'added 154 packages in 2.3s';
-            if(cmd.includes('aws s3 ls')) return '2026-01-21  my-bucket1\n2026-01-20  my-backup';
             if(cmd.includes('ls')) return './assets/ data/ templates/ gui.py main.cpp parser.js';
             if(cmd==='help') return 'Available: git docker kubectl aws npm python bash... (626k total)';
             return `[demo] ${cmd} executed`;
