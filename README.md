@@ -1,125 +1,75 @@
 # TerminalGen ★ 450+ Commands
 
-A lightning-fast C++ command-line tool that puts **450+ essential commands** at your fingertips. Instantly look up command-line syntax, descriptions, and usage examples.
+**Lightning-fast C++ CLI** | **Desktop GUI** | **Web GUI**  
+**Search 450+ essential commands instantly** (bash/git/docker/python/k8s/powershell)
 
-## Description
+[![CLI Demo](https://img.shields.io/badge/CLI-Demo-brightgreen)](https://github.com/Freedomwithin/TerminalGen)
+[![Desktop GUI](https://img.shields.io/badge/GUI-Desktop-blue)](https://github.com/Freedomwithin/TerminalGen)
+[![Web GUI](https://img.shields.io/badge/Web-localhost:8501-orange)](https://github.com/Freedomwithin/TerminalGen)
 
-Tired of searching for the right command? TerminalGen is your ultimate reference tool, giving you immediate access to a vast library of commands across multiple programming languages, package managers, networking tools, system utilities, and more.
-
-Whether you're using the command-line interface (CLI) for quick lookups or the graphical user interface (GUI) for an interactive experience, this tool ensures you have tons of powerful commands just a search away.
-
-- Look up thousands of commands in seconds
-- Search by name, keyword, or category
-- Supports programming, security, networking, system monitoring, and more
-Never forget a command again!
-
-## Quick Start (30 seconds)
+## 🚀 One-Click Setup (30 seconds)
 
 ```bash
-git clone https://github.com/Freedomwithin/TerminalGen
+git clone https://github.com/Freedomwithin/TerminalGen.git
 cd TerminalGen
-mkdir -p include/nlohmann data
-curl -o include/nlohmann/json.hpp https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp
-g++ main.cpp -o terminalgen -std=c++17
-./terminalgen "process"  # → htop/ps/pgrep instantly
+chmod +x setup.sh
+./setup.sh  # Compiles CLI + launches Desktop + Web GUIs!
+Linux/WSL/Mac: Native support
+Windows: WSL or Git Bash
 ```
 
-##  Why TerminalGen?
-⚡ Lightning-fast: C++ implementation for instant lookups
-
-📚 450+ commands across 25+ categories (Bash, Git, Python, Docker, K8s, PowerShell, AWS CLI, etc.)
-
-🔍 Fuzzy search: Type "process" → get htop, ps, pgrep, top
-
-🎨 Dual interface: CLI + Python/Tkinter GUI
-
-✨ Extensible: Add commands via simple JSON
-
-📋 Coverage (450+ Commands)
-Core: Bash, Git, Python, Rust, Node.js, PowerShell
-DevOps: Docker, Kubernetes, Terraform, AWS/Azure/GCP CLIs
-System: Monitoring (htop, iotop), networking (dig, nslookup), file processing
-Databases: SQL
-Windows: PowerShell essentials (Get-Process, Stop-Process)
-
-## 🚀 Usage
-Command-Line Interface (CLI)
+🎯 What You Get Instantly
+text
+✅ C++ CLI: ./terminal_commands "docker" → docker ps/rm/run
+✅ Desktop GUI: Futuristic Tkinter window (1400x900)
+✅ Web GUI: http://localhost:8501 (Flet-powered)
+✅ 450+ commands: bash/git/python/docker/k8s/powershell
+💥 Usage Examples
 bash
-./terminalgen                    # Interactive mode
-./terminalgen "process"         # Direct search
-./terminalgen list              # List all commands
-./terminalgen search git        # Fuzzy search
-./terminalgen help              # Help
-# Shortcuts: l=list, s=search, h=help
-Graphical User Interface (GUI)
-bash
-python gui.py
-Search by name/description/usage
+# CLI (lightning fast)
+./terminal_commands "process"    # → htop ps pgrep pstree pmap
+./terminal_commands "docker"     # → docker ps rm run images
+./terminal_commands list         # → All 450 commands
+./terminal_commands "git"        # → git commit push clone
 
-Double-click to copy command
+# GUIs auto-launch
+Desktop: New window opens (search + copy)
+Web:     http://localhost:8501
+📊 Coverage (450+ Commands)
+Category	Examples
+Core	bash, git, python, rust, node, powershell
+DevOps	docker, kubernetes, terraform, aws/azure/gcp
+System	htop, iotop, dig, nslookup, pmap, pstree
+Windows	Get-Process, Stop-Process, winget
+🎨 Triple Threat Interface
+C++ CLI - Zero startup, instant search
 
-Browse all 450+ commands
+Desktop GUI - Futuristic dark theme (#0a0a1a)
 
-🛠️ Installation
-Clone & Setup:
+Web GUI - http://localhost:8501 (browser-friendly)
 
-```bash
-git clone https://github.com/Freedomwithin/TerminalGen
-cd TerminalGen
-mkdir -p include/nlohmann data
-Download JSON library:
-```
-```bash
-curl -o include/nlohmann/json.hpp https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp
-Compile C++ CLI:
-```
-```bash
-g++ main.cpp -o terminalgen -std=c++17
-chmod +x terminalgen
-Ensure data/commands.json exists (450+ commands included)
-```
-📦 Dependencies
-C++17 compiler (g++)
-
-nlohmann/json (header-only, auto-downloaded)
-
-Python 3 + Tkinter (GUI only)
-
-📁 Example commands.json
-json
-[
-  {
-    "name": "git commit",
-    "description": "Commit changes",
-    "usage": "git commit -m 'message'",
-    "language": "git"
-  },
-  {
-    "name": "htop",
-    "description": "Interactive process viewer",
-    "usage": "htop",
-    "language": "bash"
-  }
-]
-✨ Recent Updates
-450+ commands (was 216) - comprehensive dev coverage
-
-Fuzzy search upgraded for better relevance
-
-PowerShell commands added for Windows/WSL users
-
-Shorthand CLI: l (list), s (search), h (help)
-
+🛠️ Under the Hood
+text
+450+ commands → data/commands.json
+C++ fuzzy search → main.cpp (nlohmann/json)
+Desktop GUI → gui.py (Tkinter)
+Web GUI → web_gui.py (Flet)
+One-click → setup.sh
+✨ Why TerminalGen Beats Everything
+Feature	TerminalGen	tldr	cheat.sh
+Speed	C++ (instant)	JS (medium)	Network (slow)
+Offline	✅ 450+ local	✅	❌
+GUI	✅ Desktop + Web	❌	❌
+Windows	✅ PowerShell	✅	✅
+Categories	25+	10+	Varies
 🤝 Contributing
-Add commands to data/commands.json
+Add commands: data/commands.json
 
 Submit PR with new entries
 
-Improve search algorithms
+Improve fuzzy search algorithm
 
-Add new language categories
+New GUI themes/languages
 
 📄 License
-MIT License
-
-Copyright (c) 2026 Freedomwithin
+MIT © 2026 Freedomwithin

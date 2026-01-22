@@ -1,0 +1,10 @@
+{
+  "name": "terminalgen",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "./build_web.sh"
+  },
+  "dependencies": {
+    "flet": "^0.80.2"
+  }
+}
