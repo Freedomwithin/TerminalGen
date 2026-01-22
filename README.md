@@ -3,7 +3,7 @@
 **Lightning-fast C++ CLI** | **Neon Desktop GUI** | **Quantum Web GUI**  
 **Instant fuzzy search across 1,024+ devops commands** (bash/git/docker/k8s/aws/python/powershell)
 
-[![Vercel Demo](https://terminal-gen.vercel.app)](https://terminal-gen.vercel.app)
+[![**Vercel Demo**](https://terminal-gen.vercel.app)](https://terminal-gen.vercel.app)
 
 [![Desktop GUI](https://img.shields.io/badge/GUI-Desktop%20Neon-blueviolet)](https://github.com/Freedomwithin/TerminalGen)
 
