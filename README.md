@@ -7,7 +7,7 @@ Replaces tldr/cheat.sh with 1000x speed + native Windows support. Search "docker
 
 <img width="1919" height="946" alt="TerrminalGen demo picture" src="https://github.com/user-attachments/assets/48a0dc55-2d9c-4422-866c-ab5b34a8ba30" />
 
-[![**Vercel Demo**](https://terminal-gen.vercel.app)]
+[![**Vercel Demo**]([https://terminal-gen.vercel.app](https://terminal-gen.vercel.app))]
 
 ## One-Click Setup (30 seconds)
 
