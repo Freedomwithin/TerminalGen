@@ -4,6 +4,7 @@ import json
 import subprocess
 import math
 import os
+import shlex
 
 class TerminalGenFuturism:
     def __init__(self):
@@ -28,10 +29,10 @@ class TerminalGenFuturism:
     
     def run_cli(self, args):
         try:
-            cmd = ["./terminal_commands"] + args
-            # Pass data path explicitly if env var not set, but standard setup uses default or env
-            # assuming ./terminal_commands is in CWD
-            result = subprocess.run(cmd, capture_output=True, text=True)
+            # Use -- to separate flags from the query, preventing injection of flags
+            # Use shell=False to prevent shell injection (default, but explicit for safety/linting)
+            cmd = ["./terminal_commands", "--"] + args
+            result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
             if result.returncode != 0:
                 print(f"CLI Error: {result.stderr}")
                 return []
@@ -240,16 +241,6 @@ class TerminalGenFuturism:
     def run_cli_live(self):
         query = self.search_var.get()
         if query:
-            # Here we want to actually execute the command in the shell?
-            # Or assume the user wants to see what the CLI returns for the query?
-            # The original code ran `./terminal_commands query` and showed output.
-            # But now `terminal_commands` returns JSON.
-            # Maybe this button was intended to "Execute the selected command"?
-            # "Click to execute fully online" said the README.
-            # But the code `process = subprocess.Popen(["./terminal_commands", query]...`
-            # clearly just ran the search tool.
-            # I'll keep it running the search tool but format the JSON nicely.
-
             try:
                 raw_json = self.run_cli([query])
                 formatted = json.dumps(raw_json, indent=2)

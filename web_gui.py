@@ -2,14 +2,17 @@ from flask import Flask, render_template, request, jsonify
 import json
 import subprocess
 import os
+import shlex
 
 app = Flask(__name__)
 
 def run_search_cli(query_args):
     """Executes the C++ CLI and returns parsed JSON."""
     try:
-        cmd = ["./terminal_commands"] + query_args
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        # Use -- to separate flags from the query, preventing injection of flags
+        # Use shell=False to prevent shell injection (default, but explicit for safety/linting)
+        cmd = ["./terminal_commands", "--"] + query_args
+        result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
         if result.returncode != 0:
             print(f"CLI Error: {result.stderr}")
             return []
@@ -43,8 +46,8 @@ def run_cli():
     # Let's keep it but ensure it uses the binary.
     query = request.args.get('q', '')
     try:
-        result = subprocess.run(["./terminal_commands", query], 
-                              capture_output=True, text=True, timeout=5)
+        cmd = ["./terminal_commands", "--", query]
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=5, shell=False)
         # Return raw output
         return jsonify({"output": result.stdout + result.stderr})
     except:
