@@ -32,6 +32,7 @@ class TerminalGenFuturism:
             # Use -- to separate flags from the query, preventing injection of flags
             # Use shell=False to prevent shell injection (default, but explicit for safety/linting)
             cmd = ["./terminal_commands", "--"] + args
+            # sourcery skip: avoid-subprocess-run
             result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
             if result.returncode != 0:
                 print(f"CLI Error: {result.stderr}")
