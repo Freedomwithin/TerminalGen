@@ -1,21 +1,44 @@
-#include <emscripten.h>
-#include <string.h>
-#include <string>
+#include "search.hpp"
+#include <fstream>
+#include <iostream>
+#include <algorithm>
+#include <cctype>
 
-extern "C" {
-    EMSCRIPTEN_KEEPALIVE
-    char* search_commands(char* query_c) {
-        static char result[4096];
-        std::string query(query_c);
-        
-        // SIMULATE FULL DATASET SEARCH (real impl tomorrow)
-        if (query.find("git") != std::string::npos) {
-            strcpy(result, "[{\"name\":\"git status\",\"desc\":\"repo status\",\"usage\":\"git status\",\"lang\":\"GIT\"},{\"name\":\"git commit\",\"desc\":\"commit changes\",\"usage\":\"git commit -m msg\",\"lang\":\"GIT\"},{\"name\":\"git push\",\"desc\":\"push changes\",\"usage\":\"git push origin main\",\"lang\":\"GIT\"}]");
-        } else if (query.find("docker") != std::string::npos) {
-            strcpy(result, "[{\"name\":\"docker ps\",\"desc\":\"list containers\",\"usage\":\"docker ps\",\"lang\":\"DOCKER\"},{\"name\":\"docker run\",\"desc\":\"run container\",\"usage\":\"docker run -d nginx\",\"lang\":\"DOCKER\"}]");
-        } else {
-            strcpy(result, "[]");
+void CommandRepository::LoadCommands(const std::string& path) {
+    try {
+        std::ifstream file(path);
+        if (!file.is_open()) {
+            std::cerr << "Failed to open commands file: " << path << std::endl;
+            return;
         }
-        return result;
+        json j;
+        file >> j;
+        commands = j.get<std::vector<CommandResult>>();
+    } catch (const std::exception& e) {
+        std::cerr << "Error loading commands: " << e.what() << std::endl;
     }
+}
+
+// Helper to lowercase string for case-insensitive search
+std::string to_lower(const std::string& s) {
+    std::string data = s;
+    std::transform(data.begin(), data.end(), data.begin(),
+        [](unsigned char c){ return std::tolower(c); });
+    return data;
+}
+
+std::vector<CommandResult> CommandRepository::Search(const std::string& query) {
+    std::vector<CommandResult> results;
+    std::string lowerQuery = to_lower(query);
+
+    for (const auto& cmd : commands) {
+        // Simple fuzzy search: check if query is substring of any field
+        if (to_lower(cmd.Name).find(lowerQuery) != std::string::npos ||
+            to_lower(cmd.Description).find(lowerQuery) != std::string::npos ||
+            to_lower(cmd.Usage).find(lowerQuery) != std::string::npos ||
+            to_lower(cmd.Language).find(lowerQuery) != std::string::npos) {
+            results.push_back(cmd);
+        }
+    }
+    return results;
 }

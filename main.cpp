@@ -1,20 +1,35 @@
-#include <emscripten.h>
-#include <string.h>
+#include "search.hpp"
+#include <iostream>
+#include <vector>
 
-extern "C" {
-    EMSCRIPTEN_KEEPALIVE
-    char* search_commands(char* query) {
-        static char result[4096];
-        
-        if (strstr(query, "git")) {
-            strcpy(result, "[{\"name\":\"git status\",\"desc\":\"repo status\",\"usage\":\"git status\",\"lang\":\"GIT\"},{\"name\":\"git commit\",\"desc\":\"commit changes\",\"usage\":\"git commit -m msg\",\"lang\":\"GIT\"}]");
-        } else if (strstr(query, "docker")) {
-            strcpy(result, "[{\"name\":\"docker ps\",\"desc\":\"list containers\",\"usage\":\"docker ps\",\"lang\":\"DOCKER\"}]");
-        } else {
-            strcpy(result, "[]");
-        }
-        return result;
+int main(int argc, char* argv[]) {
+    if (argc < 2) {
+        // No query provided, maybe list help or all commands?
+        // The GUI calls it with a query.
+        // ./terminal_commands list -> "All 1,024+ commands" according to README
+        // Let's assume if "list" or empty, return all?
+        // But README says ./terminal_commands "list" -> All commands
+        // If no args, just return empty list or usage.
+        std::cout << "[]" << std::endl;
+        return 0;
     }
-}
 
-int main() {}
+    std::string query = argv[1];
+
+    CommandRepository repo;
+    repo.LoadCommands("data/commands.json");
+
+    std::vector<CommandResult> results;
+    if (query == "list") {
+        results = repo.Search(""); // Search with empty string should return all if logic permits
+        // My current logic: find("") in any string returns 0 (found). So yes.
+    } else {
+        results = repo.Search(query);
+    }
+
+    // Convert results to JSON
+    json j = results;
+    std::cout << j.dump() << std::endl;
+
+    return 0;
+}

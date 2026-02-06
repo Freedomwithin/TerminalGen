@@ -7,7 +7,7 @@ curl -o include/nlohmann/json.hpp https://raw.githubusercontent.com/nlohmann/jso
 echo "✅ JSON library installed"
 
 # 2. Compile C++ CLI
-g++ main.cpp -o terminal_commands -std=c++17
+g++ main.cpp search.cpp -o terminal_commands -std=c++17 -Iinclude
 echo "✅ C++ CLI compiled"
 
 # 3. Test CLI
