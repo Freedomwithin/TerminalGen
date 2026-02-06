@@ -12,11 +12,11 @@ public:
     std::string Usage;
     std::string Language;
 
-    // Serialization mapping matching JSON keys (lowercase) to C++ properties (PascalCase)
-    // Actually, nlohmann macro maps to the member name.
-    // The JSON file has lowercase keys: "name", "description", "usage", "language".
-    // I want the C++ class to have PascalCase properties: Name, Description, Usage, Language.
-    // So I need to customize the to_json/from_json.
+    // Pre-computed lowercase fields for efficiency (ignored in JSON output)
+    std::string NameLower;
+    std::string DescriptionLower;
+    std::string UsageLower;
+    std::string LanguageLower;
 };
 
 inline void to_json(json& j, const CommandResult& c) {
@@ -41,14 +41,16 @@ inline void from_json(const json& j, CommandResult& c) {
 class ICommandRepository {
 public:
     virtual ~ICommandRepository() = default;
-    virtual void LoadCommands(const std::string& path) = 0;
+    virtual bool LoadCommands(const std::string& path) = 0;
     virtual std::vector<CommandResult> Search(const std::string& query) = 0;
+    virtual std::vector<CommandResult> GetAll() = 0;
 };
 
 class CommandRepository : public ICommandRepository {
 private:
     std::vector<CommandResult> commands;
 public:
-    void LoadCommands(const std::string& path) override;
+    bool LoadCommands(const std::string& path) override;
     std::vector<CommandResult> Search(const std::string& query) override;
+    std::vector<CommandResult> GetAll() override;
 };

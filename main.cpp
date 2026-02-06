@@ -1,28 +1,45 @@
 #include "search.hpp"
 #include <iostream>
 #include <vector>
+#include <cstdlib> // for getenv
 
 int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        // No query provided, maybe list help or all commands?
-        // The GUI calls it with a query.
-        // ./terminal_commands list -> "All 1,024+ commands" according to README
-        // Let's assume if "list" or empty, return all?
-        // But README says ./terminal_commands "list" -> All commands
-        // If no args, just return empty list or usage.
+    // Determine data path
+    std::string dataPath = "data/commands.json";
+
+    // Check environment variable
+    const char* envPath = std::getenv("TERMINAL_GEN_DATA");
+    if (envPath) {
+        dataPath = envPath;
+    }
+
+    // Parse CLI arguments
+    std::string query;
+    for (int i = 1; i < argc; ++i) {
+        std::string arg = argv[i];
+        if ((arg == "--data" || arg == "-d") && i + 1 < argc) {
+            dataPath = argv[++i];
+        } else {
+            query = arg;
+        }
+    }
+
+    if (query.empty()) {
+        // If no query, output usage or empty JSON?
+        // README says "./terminal_commands list" for all.
+        // If really empty arguments, maybe just return empty JSON to be safe for GUI consumers.
         std::cout << "[]" << std::endl;
         return 0;
     }
 
-    std::string query = argv[1];
-
     CommandRepository repo;
-    repo.LoadCommands("data/commands.json");
+    if (!repo.LoadCommands(dataPath)) {
+        return 1; // Exit with error code if loading fails
+    }
 
     std::vector<CommandResult> results;
     if (query == "list") {
-        results = repo.Search(""); // Search with empty string should return all if logic permits
-        // My current logic: find("") in any string returns 0 (found). So yes.
+        results = repo.GetAll();
     } else {
         results = repo.Search(query);
     }
