@@ -43,6 +43,7 @@ std::vector<CommandResult> CommandRepository::Search(const std::string& query) {
 
     for (const auto& cmd : commands) {
         // Optimized fuzzy search using pre-computed lowercase fields
+        // Checking Name, Description, Usage, and Language as intended
         if (cmd.NameLower.find(lowerQuery) != std::string::npos ||
             cmd.DescriptionLower.find(lowerQuery) != std::string::npos ||
             cmd.UsageLower.find(lowerQuery) != std::string::npos ||
