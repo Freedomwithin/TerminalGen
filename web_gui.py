@@ -5,34 +5,47 @@ import os
 
 app = Flask(__name__)
 
-# Load commands
-try:
-    with open('data/commands.json', 'r') as f:
-        COMMANDS = json.load(f)
-except:
-    COMMANDS = []
+def run_search_cli(query_args):
+    """Executes the C++ CLI and returns parsed JSON."""
+    try:
+        cmd = ["./terminal_commands"] + query_args
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        if result.returncode != 0:
+            print(f"CLI Error: {result.stderr}")
+            return []
+        return json.loads(result.stdout)
+    except Exception as e:
+        print(f"Execution Error: {e}")
+        return []
 
 @app.route('/')
 def index():
-    return render_template('index.html', commands=COMMANDS)
+    # Load all commands via CLI for the initial view
+    commands = run_search_cli(["list"])
+    return render_template('index.html', commands=commands)
 
 @app.route('/search')
 def search():
-    query = request.args.get('q', '').lower()
-    results = []
-    for cmd in COMMANDS:
-        if (query in cmd['name'].lower() or 
-            query in cmd['description'].lower() or 
-            query in cmd['usage'].lower()):
-            results.append(cmd)
+    query = request.args.get('q', '').strip()
+    if not query:
+        return jsonify([])
+
+    # Use CLI for search
+    results = run_search_cli([query])
     return jsonify(results)
 
 @app.route('/cli')
 def run_cli():
+    # This endpoint seems to be for executing arbitrary commands?
+    # Original code: subprocess.run(["./terminal_commands", query]...)
+    # ./terminal_commands IS the search tool.
+    # So this endpoint was probably redundant or for debug.
+    # Let's keep it but ensure it uses the binary.
     query = request.args.get('q', '')
     try:
         result = subprocess.run(["./terminal_commands", query], 
                               capture_output=True, text=True, timeout=5)
+        # Return raw output
         return jsonify({"output": result.stdout + result.stderr})
     except:
         return jsonify({"output": "⚠️ CLI executable not found - run './terminal_commands'"})
