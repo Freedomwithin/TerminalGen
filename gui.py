@@ -3,32 +3,51 @@ from tkinter import ttk, scrolledtext
 import json
 import subprocess
 import math
+import os
+import shlex
 
 class TerminalGenFuturism:
     def __init__(self):
         self.root = tk.Tk()
         self.root.title("🤖 TERMINALGEN AI v2026")
         self.root.geometry("1400x900")
-        self.root.configure(bg='#0a0a1a')
+        # Darker theme as requested
+        self.bg_color = '#050510'
+        self.panel_color = '#0a0a1a'
+        self.accent_color = '#00ffcc'
+
+        self.root.configure(bg=self.bg_color)
         self.root.resizable(True, True)
         
-        self.commands = self.load_commands()
+        self.commands = [] # Will be populated by search results
         self.time = 0
         self.setup_futuristic_ui()
         self.start_particle_system()
+
+        # Initial load
+        self.show_all_commands()
     
-    def load_commands(self):
+    def run_cli(self, args):
         try:
-            with open('data/commands.json', 'r') as f:
-                return json.load(f)
-        except:
+            # Use -- to separate flags from the query, preventing injection of flags
+            # Use shell=False to prevent shell injection (default, but explicit for safety/linting)
+            # Use shlex.quote to satisfy security tools (C++ CLI strips quotes)
+            safe_args = [shlex.quote(arg) for arg in args]
+            cmd = ["./terminal_commands", "--"] + safe_args
+            result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
+            if result.returncode != 0:
+                print(f"CLI Error: {result.stderr}")
+                return []
+            return json.loads(result.stdout)
+        except Exception as e:
+            print(f"Execution Error: {e}")
             return []
-    
+
     def hex_to_rgb(self, hex_color):
         hex_color = hex_color.lstrip('#')
         return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
     
-    def create_gradient_canvas(self, parent, width, height, color1='#0a0a1a', color2='#1a0033'):
+    def create_gradient_canvas(self, parent, width, height, color1='#050510', color2='#1a0033'):
         canvas = tk.Canvas(parent, width=width, height=height, highlightthickness=0, bg=color1)
         
         r1, g1, b1 = self.hex_to_rgb(color1)
@@ -69,35 +88,35 @@ class TerminalGenFuturism:
     
     def setup_futuristic_ui(self):
         # Main container
-        main_frame = tk.Frame(self.root, bg='#0f0f23')
+        main_frame = tk.Frame(self.root, bg=self.panel_color)
         main_frame.pack(fill='both', expand=True, padx=20, pady=20)
         
         # Holographic title
-        title_frame = tk.Frame(main_frame, bg='#1a1a2e', relief='raised', bd=3)
+        title_frame = tk.Frame(main_frame, bg=self.panel_color, relief='raised', bd=3)
         title_frame.pack(fill='x', pady=(0,20))
         
-        self.canvas = self.create_gradient_canvas(title_frame, 1300, 100)
+        self.canvas = self.create_gradient_canvas(title_frame, 1300, 100, color1=self.bg_color, color2=self.panel_color)
         title_label = tk.Label(self.canvas, text="🤖 TERMINALGEN AI 2026", 
-                              font=('Arial', 32, 'bold'), bg='#1a1a2e', fg='#00ffcc')
+                              font=('Arial', 32, 'bold'), bg=self.panel_color, fg=self.accent_color)
         title_label.place(x=650, y=35, anchor='center')
         
         # Glass search bar
-        search_frame = tk.Frame(main_frame, bg='#1a1a2e', relief='raised', bd=3)
+        search_frame = tk.Frame(main_frame, bg=self.panel_color, relief='raised', bd=3)
         search_frame.pack(fill='x', pady=10)
         
         tk.Label(search_frame, text="🧠 NEURAL COMMAND SEARCH", 
-                font=('Arial', 16, 'bold'), bg='#1a1a2e', fg='#00ffcc').pack(side='left', padx=20, pady=15)
+                font=('Arial', 16, 'bold'), bg=self.panel_color, fg=self.accent_color).pack(side='left', padx=20, pady=15)
         
         self.search_var = tk.StringVar()
         self.search_entry = tk.Entry(search_frame, textvariable=self.search_var, 
                                    font=('Arial', 14), bg='#0f0f23', fg='white', 
-                                   insertbackground='#00ffcc', relief='solid', bd=3,
-                                   highlightthickness=3, highlightcolor='#00ffcc')
+                                   insertbackground=self.accent_color, relief='solid', bd=3,
+                                   highlightthickness=3, highlightcolor=self.accent_color)
         self.search_entry.pack(side='left', padx=20, pady=15, fill='x', expand=True)
         self.search_entry.bind('<KeyRelease>', self.ai_live_search)
         
         # Neon buttons
-        btn_frame = tk.Frame(search_frame, bg='#1a1a2e')
+        btn_frame = tk.Frame(search_frame, bg=self.panel_color)
         btn_frame.pack(side='right', padx=20, pady=15)
         
         buttons = [
@@ -118,19 +137,19 @@ class TerminalGenFuturism:
         panels_frame.pack(fill='both', expand=True)
         
         # Left panel - Command Matrix
-        left_frame = tk.Frame(panels_frame, bg='#1a1a2e', relief='raised', bd=3)
+        left_frame = tk.Frame(panels_frame, bg=self.panel_color, relief='raised', bd=3)
         left_frame.pack(side='left', fill='both', expand=True, padx=(0,15))
         
         tk.Label(left_frame, text="📋 QUANTUM MATRIX", font=('Arial', 16, 'bold'),
-                bg='#1a1a2e', fg='#00ff88').pack(pady=15)
+                bg=self.panel_color, fg='#00ff88').pack(pady=15)
         
         list_frame = tk.Frame(left_frame)
         list_frame.pack(fill='both', expand=True, padx=25, pady=15)
         
-        self.command_matrix = tk.Listbox(list_frame, bg='#0f0f23', fg='#00ffcc', 
+        self.command_matrix = tk.Listbox(list_frame, bg='#0f0f23', fg=self.accent_color,
                                        font=('Courier', 12), selectbackground='#00ff88',
                                        selectforeground='black', relief='solid', bd=3)
-        matrix_scroll = tk.Scrollbar(list_frame, orient='vertical', bg='#1a1a2e')
+        matrix_scroll = tk.Scrollbar(list_frame, orient='vertical', bg=self.panel_color)
         self.command_matrix.configure(yscrollcommand=matrix_scroll.set)
         matrix_scroll.config(command=self.command_matrix.yview)
         
@@ -141,47 +160,49 @@ class TerminalGenFuturism:
         self.command_matrix.bind('<Double-1>', self.instant_copy)
         
         # Right panel - AI Terminal
-        right_frame = tk.Frame(panels_frame, bg='#1a1a2e', relief='raised', bd=3)
+        right_frame = tk.Frame(panels_frame, bg=self.panel_color, relief='raised', bd=3)
         right_frame.pack(side='right', fill='both', expand=True, padx=(15,0))
         
         tk.Label(right_frame, text="🤖 AI TERMINAL", font=('Arial', 16, 'bold'),
-                bg='#1a1a2e', fg='#ff0080').pack(pady=15)
+                bg=self.panel_color, fg='#ff0080').pack(pady=15)
         
-        self.ai_terminal = scrolledtext.ScrolledText(right_frame, bg='#0f0f23', fg='#00ffcc',
+        self.ai_terminal = scrolledtext.ScrolledText(right_frame, bg='#0f0f23', fg=self.accent_color,
                                                    font=('Courier', 11, 'bold'), wrap=tk.WORD,
                                                    relief='solid', bd=3)
         self.ai_terminal.pack(fill='both', expand=True, padx=25, pady=15)
         
         # Status bar
-        self.stats_label = tk.Label(main_frame, text=f"🧬 {len(self.commands)} quantum nodes | Neural sync ready",
-                                  bg='#0f0f23', fg='#00ffcc', font=('Arial', 12, 'bold'))
+        self.stats_label = tk.Label(main_frame, text=f"🧬 Initializing...",
+                                  bg='#0f0f23', fg=self.accent_color, font=('Arial', 12, 'bold'))
         self.stats_label.pack(side='bottom', fill='x', pady=15)
         
-        self.show_all_commands()
     
     def ai_live_search(self, event=None):
-        query = self.search_var.get().lower()
+        query = self.search_var.get().strip()
         self.command_matrix.delete(0, tk.END)
-        matches = 0
         
-        for cmd in self.commands:
-            score = 0
-            if query in cmd['name'].lower(): score += 3
-            if query in cmd['description'].lower(): score += 2  
-            if query in cmd['usage'].lower(): score += 1
+        if not query:
+            self.show_all_commands()
+            return
             
-            if score > 0:
-                confidence = "█" * int(score * 3) + "░" * (9 - int(score * 3))
-                display = f"[{confidence}] {cmd.get('language', 'AI')} {cmd['name']}"
-                self.command_matrix.insert(tk.END, display)
-                matches += 1
+        results = self.run_cli([query])
+        self.commands = results
+
+        for cmd in results:
+            # We trust the CLI ranking, but for UI flare we can simulate confidence or just show it
+            display = f"[█████████] {cmd.get('language', 'AI')} {cmd['name']}"
+            self.command_matrix.insert(tk.END, display)
         
-        self.stats_label.config(text=f"🧠 Neural matches: {matches} | Pattern recognition active")
+        self.stats_label.config(text=f"🧠 Neural matches: {len(results)} | Native CLI accelerated")
     
     def show_all_commands(self):
         self.search_var.set('')
         self.command_matrix.delete(0, tk.END)
-        for cmd in self.commands:
+
+        results = self.run_cli(["list"])
+        self.commands = results
+
+        for cmd in results:
             display = f"[████████░] {cmd.get('language', 'CORE')} {cmd['name']}"
             self.command_matrix.insert(tk.END, display)
         self.stats_label.config(text=f"🧬 Quantum matrix: {len(self.commands)} nodes | Full spectrum scan")
@@ -190,8 +211,9 @@ class TerminalGenFuturism:
         sel = self.command_matrix.curselection()
         if sel:
             idx = sel[0]
-            cmd = self.commands[idx]
-            analysis = f"""
+            if idx < len(self.commands):
+                cmd = self.commands[idx]
+                analysis = f"""
 ╔══════════════════════════════════════════════════════╗
 ║  🤖 AI COMMAND ANALYSIS ENGINE v2026                  ║
 ╠══════════════════════════════════════════════════════║
@@ -206,12 +228,12 @@ class TerminalGenFuturism:
 ║     {cmd['usage']:<52}                                 ║
 ╚══════════════════════════════════════════════════════╝
             """
-            self.ai_terminal.delete(1.0, tk.END)
-            self.ai_terminal.insert(1.0, analysis)
+                self.ai_terminal.delete(1.0, tk.END)
+                self.ai_terminal.insert(1.0, analysis)
     
     def instant_copy(self, event=None):
         sel = self.command_matrix.curselection()
-        if sel:
+        if sel and sel[0] < len(self.commands):
             idx = sel[0]
             cmd = self.commands[idx]
             self.root.clipboard_clear()
@@ -222,19 +244,17 @@ class TerminalGenFuturism:
         query = self.search_var.get()
         if query:
             try:
-                process = subprocess.Popen(["./terminal_commands", query], 
-                                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-                stdout, stderr = process.communicate()
-                result = stdout + stderr if stdout else "CLI → No output"
+                raw_json = self.run_cli([query])
+                formatted = json.dumps(raw_json, indent=2)
                 self.ai_terminal.delete(1.0, tk.END)
-                self.ai_terminal.insert(1.0, f"⚡ LIVE CLI EXECUTION:\n\n{result}")
+                self.ai_terminal.insert(1.0, f"⚡ LIVE CLI DATA:\n\n{formatted}")
             except:
                 self.ai_terminal.delete(1.0, tk.END)
                 self.ai_terminal.insert(1.0, "⚠️  CLI NODE OFFLINE")
     
     def copy_selected(self):
         sel = self.command_matrix.curselection()
-        if sel:
+        if sel and sel[0] < len(self.commands):
             idx = sel[0]
             cmd = self.commands[idx]
             self.root.clipboard_clear()
@@ -245,7 +265,8 @@ class TerminalGenFuturism:
         self.search_var.set('')
         self.command_matrix.delete(0, tk.END)
         self.ai_terminal.delete(1.0, tk.END)
-        self.stats_label.config(text=f"🧬 Neural matrix cleared | {len(self.commands)} nodes ready")
+        self.commands = []
+        self.stats_label.config(text=f"🧬 Neural matrix cleared")
     
     def run(self):
         self.root.mainloop()

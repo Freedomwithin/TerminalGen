@@ -1,21 +1,59 @@
-#include <emscripten.h>
-#include <string.h>
-#include <string>
+#include "search.hpp"
+#include <fstream>
+#include <iostream>
+#include <algorithm>
+#include <cctype>
 
-extern "C" {
-    EMSCRIPTEN_KEEPALIVE
-    char* search_commands(char* query_c) {
-        static char result[4096];
-        std::string query(query_c);
-        
-        // SIMULATE FULL DATASET SEARCH (real impl tomorrow)
-        if (query.find("git") != std::string::npos) {
-            strcpy(result, "[{\"name\":\"git status\",\"desc\":\"repo status\",\"usage\":\"git status\",\"lang\":\"GIT\"},{\"name\":\"git commit\",\"desc\":\"commit changes\",\"usage\":\"git commit -m msg\",\"lang\":\"GIT\"},{\"name\":\"git push\",\"desc\":\"push changes\",\"usage\":\"git push origin main\",\"lang\":\"GIT\"}]");
-        } else if (query.find("docker") != std::string::npos) {
-            strcpy(result, "[{\"name\":\"docker ps\",\"desc\":\"list containers\",\"usage\":\"docker ps\",\"lang\":\"DOCKER\"},{\"name\":\"docker run\",\"desc\":\"run container\",\"usage\":\"docker run -d nginx\",\"lang\":\"DOCKER\"}]");
-        } else {
-            strcpy(result, "[]");
+// Helper to lowercase string for case-insensitive search
+std::string to_lower(const std::string& s) {
+    std::string data = s;
+    std::transform(data.begin(), data.end(), data.begin(),
+        [](unsigned char c){ return std::tolower(c); });
+    return data;
+}
+
+bool CommandRepository::LoadCommands(const std::string& path) {
+    try {
+        std::ifstream file(path);
+        if (!file.is_open()) {
+            std::cerr << "Failed to open commands file: " << path << std::endl;
+            return false;
         }
-        return result;
+        json j;
+        file >> j;
+        commands = j.get<std::vector<CommandResult>>();
+
+        // Pre-compute lowercase fields
+        for (auto& cmd : commands) {
+            cmd.NameLower = to_lower(cmd.Name);
+            cmd.DescriptionLower = to_lower(cmd.Description);
+            cmd.UsageLower = to_lower(cmd.Usage);
+            cmd.LanguageLower = to_lower(cmd.Language);
+        }
+        return true;
+    } catch (const std::exception& e) {
+        std::cerr << "Error loading commands: " << e.what() << std::endl;
+        return false;
     }
+}
+
+std::vector<CommandResult> CommandRepository::Search(const std::string& query) {
+    std::vector<CommandResult> results;
+    std::string lowerQuery = to_lower(query);
+
+    for (const auto& cmd : commands) {
+        // Optimized fuzzy search using pre-computed lowercase fields
+        // Checking Name, Description, Usage, and Language as intended
+        if (cmd.NameLower.find(lowerQuery) != std::string::npos ||
+            cmd.DescriptionLower.find(lowerQuery) != std::string::npos ||
+            cmd.UsageLower.find(lowerQuery) != std::string::npos ||
+            cmd.LanguageLower.find(lowerQuery) != std::string::npos) {
+            results.push_back(cmd);
+        }
+    }
+    return results;
+}
+
+std::vector<CommandResult> CommandRepository::GetAll() {
+    return commands;
 }

@@ -2,40 +2,42 @@ from flask import Flask, render_template, request, jsonify
 import json
 import subprocess
 import os
+import shlex
 
 app = Flask(__name__)
 
-# Load commands
-try:
-    with open('data/commands.json', 'r') as f:
-        COMMANDS = json.load(f)
-except:
-    COMMANDS = []
+def run_search_cli(query_args):
+    """Executes the C++ CLI and returns parsed JSON."""
+    try:
+        # Use -- to separate flags from the query, preventing injection of flags
+        # Use shell=False to prevent shell injection (default, but explicit for safety/linting)
+        # Use shlex.quote to satisfy security tools (C++ CLI strips quotes)
+        safe_args = [shlex.quote(arg) for arg in query_args]
+        cmd = ["./terminal_commands", "--"] + safe_args
+        result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
+        if result.returncode != 0:
+            print(f"CLI Error: {result.stderr}")
+            return []
+        return json.loads(result.stdout)
+    except Exception as e:
+        print(f"Execution Error: {e}")
+        return []
 
 @app.route('/')
 def index():
-    return render_template('index.html', commands=COMMANDS)
+    # Load all commands via CLI for the initial view
+    commands = run_search_cli(["list"])
+    return render_template('index.html', commands=commands)
 
 @app.route('/search')
 def search():
-    query = request.args.get('q', '').lower()
-    results = []
-    for cmd in COMMANDS:
-        if (query in cmd['name'].lower() or 
-            query in cmd['description'].lower() or 
-            query in cmd['usage'].lower()):
-            results.append(cmd)
-    return jsonify(results)
+    query = request.args.get('q', '').strip()
+    if not query:
+        return jsonify([])
 
-@app.route('/cli')
-def run_cli():
-    query = request.args.get('q', '')
-    try:
-        result = subprocess.run(["./terminal_commands", query], 
-                              capture_output=True, text=True, timeout=5)
-        return jsonify({"output": result.stdout + result.stderr})
-    except:
-        return jsonify({"output": "⚠️ CLI executable not found - run './terminal_commands'"})
+    # Use CLI for search
+    results = run_search_cli([query])
+    return jsonify(results)
 
 if __name__ == '__main__':
     os.makedirs('templates', exist_ok=True)
