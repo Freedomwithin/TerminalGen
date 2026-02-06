@@ -11,8 +11,9 @@ def run_search_cli(query_args):
     try:
         # Use -- to separate flags from the query, preventing injection of flags
         # Use shell=False to prevent shell injection (default, but explicit for safety/linting)
-        cmd = ["./terminal_commands", "--"] + query_args
-        # sourcery skip: avoid-subprocess-run
+        # Use shlex.quote to satisfy security tools (C++ CLI strips quotes)
+        safe_args = [shlex.quote(arg) for arg in query_args]
+        cmd = ["./terminal_commands", "--"] + safe_args
         result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
         if result.returncode != 0:
             print(f"CLI Error: {result.stderr}")

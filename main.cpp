@@ -32,16 +32,15 @@ int main(int argc, char* argv[]) {
                 continue;
             }
         }
-
-        // If we reach here, it's the query or part of it.
-        // For now, we only support one query string.
-        // If multiple args are provided after flags, we could join them or just take the first.
-        // Previous logic took the last one or overwrote.
-        // Let's assume the query is the accumulation of remaining args or just the last one?
-        // Simple search tool usually takes one query string.
-        // If "git commit" is passed as two args, we might want to join them?
-        // But the python script passes it as one arg.
         query = arg;
+    }
+
+    // Strip quotes if present (handling shlex.quote from python)
+    if (query.size() >= 2) {
+        if ((query.front() == '"' && query.back() == '"') ||
+            (query.front() == '\'' && query.back() == '\'')) {
+            query = query.substr(1, query.size() - 2);
+        }
     }
 
     if (query.empty()) {

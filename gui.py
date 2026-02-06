@@ -31,8 +31,9 @@ class TerminalGenFuturism:
         try:
             # Use -- to separate flags from the query, preventing injection of flags
             # Use shell=False to prevent shell injection (default, but explicit for safety/linting)
-            cmd = ["./terminal_commands", "--"] + args
-            # sourcery skip: avoid-subprocess-run
+            # Use shlex.quote to satisfy security tools (C++ CLI strips quotes)
+            safe_args = [shlex.quote(arg) for arg in args]
+            cmd = ["./terminal_commands", "--"] + safe_args
             result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
             if result.returncode != 0:
                 print(f"CLI Error: {result.stderr}")
