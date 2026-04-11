@@ -191,7 +191,7 @@
                 <div class="panel-header matrix-header">📊 QUANTUM MATRIX</div>
                 <div class="content" id="commandList">
                     <div style="color:#888; text-align:center; padding:50px;">
-                        Enter command name to begin neural scan...
+                        Initializing neural scan...
                     </div>
                 </div>
             </div>
@@ -201,7 +201,7 @@
                     <div class="terminal-output" id="terminalOutput">
 ╔══════════════════════════════════════════════════════╗
 ║  🧠 NEURAL NETWORK READY                             ║
-║  💾 {len(commands)} quantum nodes loaded               ║
+║  💾 556 quantum nodes loaded                         ║
 ║  ⚡ Live CLI integration active                      ║
 ╚══════════════════════════════════════════════════════╝
                     </div>
@@ -210,7 +210,7 @@
         </div>
         
         <div class="status">
-            <span id="statusText">🧬 Ready - 216 quantum nodes synchronized</span>
+            <span id="statusText">🧬 Ready - 556 quantum nodes synchronized</span>
         </div>
     </div>
 
@@ -264,11 +264,11 @@ function showDetails(cmd) {
     const terminal = document.getElementById('terminalOutput');
     terminal.innerHTML = `
 ╔══════════════════════════════════════════════════════╗
-║  🤖 AI COMMAND ANALYSIS ENGINE v2026                  ║
+║  🤖 SOVEREIGN COMMAND ANALYSIS                       ║
 ╠══════════════════════════════════════════════════════║
 ║  🧬 TARGET: ${cmd.name.toUpperCase().padEnd(35)}          ║
 ║  🌐 VECTOR: ${(cmd.language || 'QUANTUM').padEnd(35)}    ║
-║  📊 CONFIDENCE: ██████████100%                        ║
+║  🛡️ STATUS: VERIFIED 100%                             ║
 ╠══════════════════════════════════════════════════════║
 ║  💭 INTELLIGENCE:                                      ║
 ║     ${cmd.description.padEnd(52)}                       ║
@@ -276,7 +276,22 @@ function showDetails(cmd) {
 ║  💻 EXECUTION MATRIX:                                 ║
 ║     ${cmd.usage.padEnd(52)}                            ║
 ╚══════════════════════════════════════════════════════╝
+
+<button class="btn btn-cli" style="width:100%; margin-top:20px; font-weight:bold;" onclick="copyCommand('${cmd.usage.replace(/'/g, "\\'")}')">📋 COPY TO CLIPBOARD</button>
     `;
+}
+
+function copyCommand(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = '✅ COPIED!';
+        btn.style.background = 'rgba(0,255,136,0.3)';
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+        }, 1500);
+    });
 }
 
 function listAll() {

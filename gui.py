@@ -15,6 +15,10 @@ class TerminalGenFuturism:
         self.bg_color = '#050510'
         self.panel_color = '#0a0a1a'
         self.accent_color = '#00ffcc'
+        self.text_color = '#ffffff'
+        self.matrix_green = '#22c55e'
+        self.matrix_pink = '#ec4899'
+        self.cli_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "terminal_commands")
 
         self.root.configure(bg=self.bg_color)
         self.root.resizable(True, True)
@@ -29,12 +33,8 @@ class TerminalGenFuturism:
     
     def run_cli(self, args):
         try:
-            # Use -- to separate flags from the query, preventing injection of flags
-            # Use shell=False to prevent shell injection (default, but explicit for safety/linting)
-            # Use shlex.quote to satisfy security tools (C++ CLI strips quotes)
-            safe_args = [shlex.quote(arg) for arg in args]
-            cmd = ["./terminal_commands", "--"] + safe_args
-            result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
+            cmd = [self.cli_path] + args
+            result = subprocess.run(cmd, capture_output=True, text=True)
             if result.returncode != 0:
                 print(f"CLI Error: {result.stderr}")
                 return []
@@ -92,26 +92,26 @@ class TerminalGenFuturism:
         main_frame.pack(fill='both', expand=True, padx=20, pady=20)
         
         # Holographic title
-        title_frame = tk.Frame(main_frame, bg=self.panel_color, relief='raised', bd=3)
+        title_frame = tk.Frame(main_frame, bg=self.panel_color, relief='raised', bd=1)
         title_frame.pack(fill='x', pady=(0,20))
         
         self.canvas = self.create_gradient_canvas(title_frame, 1300, 100, color1=self.bg_color, color2=self.panel_color)
-        title_label = tk.Label(self.canvas, text="🤖 TERMINALGEN AI 2026", 
+        title_label = tk.Label(self.canvas, text="🤖 TERMINALGEN — SOVEREIGN AI", 
                               font=('Arial', 32, 'bold'), bg=self.panel_color, fg=self.accent_color)
         title_label.place(x=650, y=35, anchor='center')
         
         # Glass search bar
-        search_frame = tk.Frame(main_frame, bg=self.panel_color, relief='raised', bd=3)
+        search_frame = tk.Frame(main_frame, bg=self.panel_color, relief='raised', bd=1)
         search_frame.pack(fill='x', pady=10)
         
         tk.Label(search_frame, text="🧠 NEURAL COMMAND SEARCH", 
-                font=('Arial', 16, 'bold'), bg=self.panel_color, fg=self.accent_color).pack(side='left', padx=20, pady=15)
+                font=('Arial', 14, 'bold'), bg=self.panel_color, fg=self.accent_color).pack(side='left', padx=20, pady=15)
         
         self.search_var = tk.StringVar()
         self.search_entry = tk.Entry(search_frame, textvariable=self.search_var, 
-                                   font=('Arial', 14), bg='#0f0f23', fg='white', 
-                                   insertbackground=self.accent_color, relief='solid', bd=3,
-                                   highlightthickness=3, highlightcolor=self.accent_color)
+                                   font=('Arial', 14), bg='#0f0f23', fg=self.text_color, 
+                                   insertbackground=self.accent_color, relief='solid', bd=1,
+                                   highlightthickness=2, highlightcolor=self.accent_color)
         self.search_entry.pack(side='left', padx=20, pady=15, fill='x', expand=True)
         self.search_entry.bind('<KeyRelease>', self.ai_live_search)
         
@@ -120,16 +120,16 @@ class TerminalGenFuturism:
         btn_frame.pack(side='right', padx=20, pady=15)
         
         buttons = [
-            ("🌐 ALL", self.show_all_commands, '#00ff88'),
-            ("⚡ CLI", self.run_cli_live, '#ff0080'),
-            ("🧹 CLEAR", self.clear_interface, '#6666ff'),
-            ("📋 COPY", self.copy_selected, '#ffaa00')
+            ("🌐 ALL", self.show_all_commands, self.matrix_green),
+            ("⚡ INJECT", self.inject_to_terminal, self.matrix_pink),
+            ("🧹 CLEAR", self.clear_interface, '#4f46e5'),
+            ("📋 COPY", self.copy_selected, '#d97706')
         ]
         
         for text, cmd, color in buttons:
-            btn = tk.Button(btn_frame, text=text, command=cmd, bg=color, fg='black',
-                          font=('Arial', 12, 'bold'), relief='raised', bd=4,
-                          padx=25, pady=10)
+            btn = tk.Button(btn_frame, text=text, command=cmd, bg=color, fg='white',
+                          font=('Arial', 11, 'bold'), relief='flat', bd=0,
+                          padx=25, pady=8)
             btn.pack(side='left', padx=10)
         
         # Split panels
@@ -137,18 +137,18 @@ class TerminalGenFuturism:
         panels_frame.pack(fill='both', expand=True)
         
         # Left panel - Command Matrix
-        left_frame = tk.Frame(panels_frame, bg=self.panel_color, relief='raised', bd=3)
+        left_frame = tk.Frame(panels_frame, bg=self.panel_color, relief='raised', bd=1)
         left_frame.pack(side='left', fill='both', expand=True, padx=(0,15))
         
-        tk.Label(left_frame, text="📋 QUANTUM MATRIX", font=('Arial', 16, 'bold'),
-                bg=self.panel_color, fg='#00ff88').pack(pady=15)
+        tk.Label(left_frame, text="📋 COMMAND MATRIX", font=('Arial', 14, 'bold'),
+                bg=self.panel_color, fg=self.matrix_green).pack(pady=15)
         
         list_frame = tk.Frame(left_frame)
         list_frame.pack(fill='both', expand=True, padx=25, pady=15)
         
-        self.command_matrix = tk.Listbox(list_frame, bg='#0f0f23', fg=self.accent_color,
-                                       font=('Courier', 12), selectbackground='#00ff88',
-                                       selectforeground='black', relief='solid', bd=3)
+        self.command_matrix = tk.Listbox(list_frame, bg='#08080f', fg=self.text_color,
+                                       font=('Courier', 12), selectbackground=self.accent_color,
+                                       selectforeground='white', relief='flat', bd=0)
         matrix_scroll = tk.Scrollbar(list_frame, orient='vertical', bg=self.panel_color)
         self.command_matrix.configure(yscrollcommand=matrix_scroll.set)
         matrix_scroll.config(command=self.command_matrix.yview)
@@ -160,20 +160,20 @@ class TerminalGenFuturism:
         self.command_matrix.bind('<Double-1>', self.instant_copy)
         
         # Right panel - AI Terminal
-        right_frame = tk.Frame(panels_frame, bg=self.panel_color, relief='raised', bd=3)
+        right_frame = tk.Frame(panels_frame, bg=self.panel_color, relief='raised', bd=1)
         right_frame.pack(side='right', fill='both', expand=True, padx=(15,0))
         
-        tk.Label(right_frame, text="🤖 AI TERMINAL", font=('Arial', 16, 'bold'),
-                bg=self.panel_color, fg='#ff0080').pack(pady=15)
+        tk.Label(right_frame, text="🤖 SOVEREIGN TERMINAL", font=('Arial', 14, 'bold'),
+                bg=self.panel_color, fg=self.matrix_pink).pack(pady=15)
         
-        self.ai_terminal = scrolledtext.ScrolledText(right_frame, bg='#0f0f23', fg=self.accent_color,
+        self.ai_terminal = scrolledtext.ScrolledText(right_frame, bg='#08080f', fg=self.accent_color,
                                                    font=('Courier', 11, 'bold'), wrap=tk.WORD,
-                                                   relief='solid', bd=3)
+                                                   relief='flat', bd=0)
         self.ai_terminal.pack(fill='both', expand=True, padx=25, pady=15)
         
         # Status bar
-        self.stats_label = tk.Label(main_frame, text=f"🧬 Initializing...",
-                                  bg='#0f0f23', fg=self.accent_color, font=('Arial', 12, 'bold'))
+        self.stats_label = tk.Label(main_frame, text=f"🧬 Sovereign Resonance Active...",
+                                  bg='#0c0c16', fg=self.accent_color, font=('Arial', 10, 'bold'))
         self.stats_label.pack(side='bottom', fill='x', pady=15)
         
     
@@ -189,8 +189,8 @@ class TerminalGenFuturism:
         self.commands = results
 
         for cmd in results:
-            # We trust the CLI ranking, but for UI flare we can simulate confidence or just show it
-            display = f"[█████████] {cmd.get('language', 'AI')} {cmd['name']}"
+            lang = cmd.get('language', 'CORE').upper()
+            display = f"{lang:<10} | {cmd['name']}"
             self.command_matrix.insert(tk.END, display)
         
         self.stats_label.config(text=f"🧠 Neural matches: {len(results)} | Native CLI accelerated")
@@ -203,7 +203,8 @@ class TerminalGenFuturism:
         self.commands = results
 
         for cmd in results:
-            display = f"[████████░] {cmd.get('language', 'CORE')} {cmd['name']}"
+            lang = cmd.get('language', 'CORE').upper()
+            display = f"{lang:<10} | {cmd['name']}"
             self.command_matrix.insert(tk.END, display)
         self.stats_label.config(text=f"🧬 Quantum matrix: {len(self.commands)} nodes | Full spectrum scan")
     
@@ -219,7 +220,6 @@ class TerminalGenFuturism:
 ╠══════════════════════════════════════════════════════║
 ║  🧬 TARGET: {cmd['name'].upper():<35}                    ║
 ║  🌐 VECTOR: {cmd.get('language', 'QUANTUM'):<35}         ║
-║  📊 CONFIDENCE: ██████████100%                        ║
 ╠══════════════════════════════════════════════════════║
 ║  💭 INTELLIGENCE:                                      ║
 ║     {cmd['description']:<52}                           ║
@@ -240,17 +240,28 @@ class TerminalGenFuturism:
             self.root.clipboard_append(cmd['usage'])
             self.ai_terminal.insert(tk.END, "\n\n🧠 QUANTUM TRANSFER COMPLETE → CLIPBOARD")
     
-    def run_cli_live(self):
-        query = self.search_var.get()
-        if query:
+    def inject_to_terminal(self):
+        sel = self.command_matrix.curselection()
+        if sel and sel[0] < len(self.commands):
+            idx = sel[0]
+            cmd = self.commands[idx]
+            usage = cmd['usage']
+            
+            # Sovereign Ghost Strike: Hide -> Focus -> Type -> Show
+            # We use xdotool to focus the previous window (the terminal) and type the command
+            self.root.withdraw() # Hide TerminalGen
             try:
-                raw_json = self.run_cli([query])
-                formatted = json.dumps(raw_json, indent=2)
-                self.ai_terminal.delete(1.0, tk.END)
-                self.ai_terminal.insert(1.0, f"⚡ LIVE CLI DATA:\n\n{formatted}")
-            except:
-                self.ai_terminal.delete(1.0, tk.END)
-                self.ai_terminal.insert(1.0, "⚠️  CLI NODE OFFLINE")
+                # 1. Wait a moment for focus to shift naturally to the terminal
+                # 2. Focus the terminal (Alt+Tab or just relying on focus-follows-last)
+                # 3. Type the command
+                subprocess.run(["xdotool", "key", "alt+Tab"], check=False)
+                subprocess.run(["sleep", "0.2"], check=False)
+                subprocess.run(["xdotool", "type", "--clearmodifiers", usage], check=False)
+            except Exception as e:
+                print(f"Injection Error: {e}")
+            
+            self.root.after(500, self.root.deiconify) # Show TerminalGen again
+            self.stats_label.config(text="⚡ NEURAL INJECTION COMPLETE → TERMINAL")
     
     def copy_selected(self):
         sel = self.command_matrix.curselection()

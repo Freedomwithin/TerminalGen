@@ -1,0 +1,3338 @@
+[
+  {
+    "name": "git commit",
+    "description": "Commit changes",
+    "usage": "git commit -m 'message'",
+    "language": "Git"
+  },
+  {
+    "name": "cargo build",
+    "description": "Build your Rust project",
+    "usage": "cargo build",
+    "language": "Cargo"
+  },
+  {
+    "name": "ls",
+    "description": "List directory contents",
+    "usage": "ls -l",
+    "language": "Bash"
+  },
+  {
+    "name": "mkdir",
+    "description": "Create a new directory",
+    "usage": "mkdir new_directory",
+    "language": "Bash"
+  },
+  {
+    "name": "cargo run",
+    "description": "Build and run your Rust project",
+    "usage": "cargo run",
+    "language": "Rust"
+  },
+  {
+    "name": "cargo test",
+    "description": "Run your Rust project's tests",
+    "usage": "cargo test",
+    "language": "Rust"
+  },
+  {
+    "name": "rustc",
+    "description": "Compile a Rust file",
+    "usage": "rustc main.rs",
+    "language": "Rust"
+  },
+  {
+    "name": "cargo doc",
+    "description": "Generate documentation for your Rust project",
+    "usage": "cargo doc --open",
+    "language": "Rust"
+  },
+  {
+    "name": "cd",
+    "description": "Change directory",
+    "usage": "cd <directory>",
+    "language": "Bash"
+  },
+  {
+    "name": "pwd",
+    "description": "Print working directory",
+    "usage": "pwd",
+    "language": "Bash"
+  },
+  {
+    "name": "rmdir",
+    "description": "Remove a directory",
+    "usage": "rmdir <directory>",
+    "language": "Bash"
+  },
+  {
+    "name": "touch",
+    "description": "Create an empty file",
+    "usage": "touch <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "rm",
+    "description": "Remove a file",
+    "usage": "rm <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "cp",
+    "description": "Copy files and directories",
+    "usage": "cp <source> <destination>",
+    "language": "Bash"
+  },
+  {
+    "name": "mv",
+    "description": "Move or rename files and directories",
+    "usage": "mv <source> <destination>",
+    "language": "Bash"
+  },
+  {
+    "name": "cat",
+    "description": "Concatenate and print files",
+    "usage": "cat <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "less",
+    "description": "View files one page at a time",
+    "usage": "less <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "head",
+    "description": "Display the first few lines of a file",
+    "usage": "head <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "tail",
+    "description": "Display the last few lines of a file",
+    "usage": "tail <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "grep",
+    "description": "Search for a pattern in files",
+    "usage": "grep <pattern> <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "find",
+    "description": "Locate files based on criteria",
+    "usage": "find <directory> -name <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "chmod",
+    "description": "Change file permissions",
+    "usage": "chmod <permissions> <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "chown",
+    "description": "Change file ownership",
+    "usage": "chown <user> <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "sudo",
+    "description": "Execute a command as the superuser",
+    "usage": "sudo <command>",
+    "language": "Bash"
+  },
+  {
+    "name": "apt",
+    "description": "Package manager (Debian/Ubuntu)",
+    "usage": "apt install <package>",
+    "language": "Bash"
+  },
+  {
+    "name": "dnf",
+    "description": "Package manager (Fedora/CentOS)",
+    "usage": "dnf install <package>",
+    "language": "Bash"
+  },
+  {
+    "name": "brew",
+    "description": "Package manager (macOS)",
+    "usage": "brew install <package>",
+    "language": "Bash"
+  },
+  {
+    "name": "git init",
+    "description": "Initialize a new Git repository",
+    "usage": "git init",
+    "language": "Git"
+  },
+  {
+    "name": "git clone",
+    "description": "Clone a repository",
+    "usage": "git clone <repository>",
+    "language": "Git"
+  },
+  {
+    "name": "git add",
+    "description": "Stage changes for commit",
+    "usage": "git add <file>",
+    "language": "Git"
+  },
+  {
+    "name": "git status",
+    "description": "Check the status of the repository",
+    "usage": "git status",
+    "language": "Git"
+  },
+  {
+    "name": "git diff",
+    "description": "View changes",
+    "usage": "git diff",
+    "language": "Git"
+  },
+  {
+    "name": "git log",
+    "description": "View commit history",
+    "usage": "git log",
+    "language": "Git"
+  },
+  {
+    "name": "git branch",
+    "description": "Manage branches",
+    "usage": "git branch",
+    "language": "Git"
+  },
+  {
+    "name": "git checkout",
+    "description": "Switch branches",
+    "usage": "git checkout <branch>",
+    "language": "Git"
+  },
+  {
+    "name": "git merge",
+    "description": "Merge branches",
+    "usage": "git merge <branch>",
+    "language": "Git"
+  },
+  {
+    "name": "git pull",
+    "description": "Fetch and merge changes from a remote repository",
+    "usage": "git pull <remote>",
+    "language": "Git"
+  },
+  {
+    "name": "git push",
+    "description": "Push changes to a remote repository",
+    "usage": "git push <remote>",
+    "language": "Git"
+  },
+  {
+    "name": "git remote",
+    "description": "Manage remote repositories",
+    "usage": "git remote add <name> <url>",
+    "language": "Git"
+  },
+  {
+    "name": "cargo new",
+    "description": "Create a new Rust project",
+    "usage": "cargo new <project>",
+    "language": "Rust"
+  },
+  {
+    "name": "cargo check",
+    "description": "Check the code for errors",
+    "usage": "cargo check",
+    "language": "Rust"
+  },
+  {
+    "name": "cargo publish",
+    "description": "Publish a crate to crates.io",
+    "usage": "cargo publish",
+    "language": "Rust"
+  },
+  {
+    "name": "cargo update",
+    "description": "Update dependencies",
+    "usage": "cargo update",
+    "language": "Rust"
+  },
+  {
+    "name": "python",
+    "description": "Run a Python script",
+    "usage": "python <script.py>",
+    "language": "Python"
+  },
+  {
+    "name": "pip install",
+    "description": "Install Python packages",
+    "usage": "pip install <package>",
+    "language": "Python"
+  },
+  {
+    "name": "pip install -r requirements.txt",
+    "description": "Install dependencies from a requirements file",
+    "usage": "pip install -r requirements.txt",
+    "language": "Python"
+  },
+  {
+    "name": "pip uninstall",
+    "description": "Uninstall Python packages",
+    "usage": "pip uninstall <package>",
+    "language": "Python"
+  },
+  {
+    "name": "pip list",
+    "description": "List installed packages",
+    "usage": "pip list",
+    "language": "Python"
+  },
+  {
+    "name": "node",
+    "description": "Run a JavaScript file",
+    "usage": "node <script.js>",
+    "language": "JavaScript"
+  },
+  {
+    "name": "npm install",
+    "description": "Install Node.js packages",
+    "usage": "npm install <package>",
+    "language": "JavaScript"
+  },
+  {
+    "name": "npm uninstall",
+    "description": "Uninstall Node.js packages",
+    "usage": "npm uninstall <package>",
+    "language": "JavaScript"
+  },
+  {
+    "name": "npm list",
+    "description": "List installed packages",
+    "usage": "npm list",
+    "language": "JavaScript"
+  },
+  {
+    "name": "docker build",
+    "description": "Build a Docker image",
+    "usage": "docker build -t <image> .",
+    "language": "Docker"
+  },
+  {
+    "name": "docker run",
+    "description": "Run a Docker container",
+    "usage": "docker run <image>",
+    "language": "Docker"
+  },
+  {
+    "name": "docker ps",
+    "description": "List running containers",
+    "usage": "docker ps",
+    "language": "Docker"
+  },
+  {
+    "name": "docker stop",
+    "description": "Stop a container",
+    "usage": "docker stop <container>",
+    "language": "Docker"
+  },
+  {
+    "name": "docker rm",
+    "description": "Remove a container",
+    "usage": "docker rm <container>",
+    "language": "Docker"
+  },
+  {
+    "name": "docker images",
+    "description": "List Docker images",
+    "usage": "docker images",
+    "language": "Docker"
+  },
+  {
+    "name": "docker pull",
+    "description": "Pull an image from a registry",
+    "usage": "docker pull <image>",
+    "language": "Docker"
+  },
+  {
+    "name": "docker push",
+    "description": "Push an image to a registry",
+    "usage": "docker push <image>",
+    "language": "Docker"
+  },
+  {
+    "name": "SELECT",
+    "description": "Retrieve data from a table",
+    "usage": "SELECT * FROM table",
+    "language": "SQL"
+  },
+  {
+    "name": "INSERT",
+    "description": "Insert data into a table",
+    "usage": "INSERT INTO table (column1, column2) VALUES (value1, value2)",
+    "language": "SQL"
+  },
+  {
+    "name": "UPDATE",
+    "description": "Update data in a table",
+    "usage": "UPDATE table SET column1 = value1 WHERE condition",
+    "language": "SQL"
+  },
+  {
+    "name": "DELETE",
+    "description": "Delete data from a table",
+    "usage": "DELETE FROM table WHERE condition",
+    "language": "SQL"
+  },
+  {
+    "name": "CREATE TABLE",
+    "description": "Create a new table",
+    "usage": "CREATE TABLE table (column1 datatype, column2 datatype)",
+    "language": "SQL"
+  },
+  {
+    "name": "ALTER TABLE",
+    "description": "Modify an existing table",
+    "usage": "ALTER TABLE table ADD column datatype",
+    "language": "SQL"
+  },
+  {
+    "name": "DROP TABLE",
+    "description": "Delete a table",
+    "usage": "DROP TABLE table",
+    "language": "SQL"
+  },
+  {
+    "name": "vim",
+    "description": "Text editor",
+    "usage": "vim <file>",
+    "language": "Vim"
+  },
+  {
+    "name": "nano",
+    "description": "Text editor",
+    "usage": "nano <file>",
+    "language": "Nano"
+  },
+  {
+    "name": "tmux",
+    "description": "Terminal multiplexer",
+    "usage": "tmux",
+    "language": "Tmux"
+  },
+  {
+    "name": "screen",
+    "description": "Terminal multiplexer",
+    "usage": "screen",
+    "language": "Screen"
+  },
+  {
+    "name": "ssh",
+    "description": "Secure Shell",
+    "usage": "ssh <user>@<host>",
+    "language": "SSH"
+  },
+  {
+    "name": "curl",
+    "description": "Transfer data from or to a server",
+    "usage": "curl <URL>",
+    "language": "Bash"
+  },
+  {
+    "name": "wget",
+    "description": "Download files from the internet",
+    "usage": "wget <url>",
+    "language": "Wget"
+  },
+  {
+    "name": "ping",
+    "description": "Test network connectivity",
+    "usage": "ping <host>",
+    "language": "Ping"
+  },
+  {
+    "name": "nano ~/.zshrc",
+    "description": "Edit your Zsh configuration file",
+    "usage": "nano ~/.zshrc",
+    "language": "Bash"
+  },
+  {
+    "name": "source ~/.zshrc",
+    "description": "Reload your Zsh configuration",
+    "usage": "source ~/.zshrc",
+    "language": "Bash"
+  },
+  {
+    "name": "top",
+    "description": "Display Linux processes",
+    "usage": "top",
+    "language": "Bash"
+  },
+  {
+    "name": "htop",
+    "description": "Interactive process viewer",
+    "usage": "htop",
+    "language": "Bash"
+  },
+  {
+    "name": "free -m",
+    "description": "Display memory usage",
+    "usage": "free -m",
+    "language": "Bash"
+  },
+  {
+    "name": "df -h",
+    "description": "Display disk space usage",
+    "usage": "df -h",
+    "language": "Bash"
+  },
+  {
+    "name": "uptime",
+    "description": "Show how long the system has been running",
+    "usage": "uptime",
+    "language": "Bash"
+  },
+  {
+    "name": "netstat",
+    "description": "Display network connections, routing tables, interface statistics, masquerade connections, and multicast memberships",
+    "usage": "netstat -tulnp",
+    "language": "Bash"
+  },
+  {
+    "name": "ip addr",
+    "description": "Display network interfaces",
+    "usage": "ip addr",
+    "language": "Bash"
+  },
+  {
+    "name": "traceroute",
+    "description": "Trace the route to a host",
+    "usage": "traceroute <host>",
+    "language": "Bash"
+  },
+  {
+    "name": "dig",
+    "description": "DNS lookup utility",
+    "usage": "dig <domain>",
+    "language": "Bash"
+  },
+  {
+    "name": "sed",
+    "description": "Stream editor for filtering and transforming text",
+    "usage": "sed 's/old/new/g' <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "awk",
+    "description": "Pattern scanning and processing language",
+    "usage": "awk '{print $1}' <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "sort",
+    "description": "Sort lines of text files",
+    "usage": "sort <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "uniq",
+    "description": "Report or omit repeated lines",
+    "usage": "uniq <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "wc",
+    "description": "Word, line, character, and byte count",
+    "usage": "wc <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "make",
+    "description": "Build automation tool",
+    "usage": "make",
+    "language": "Make"
+  },
+  {
+    "name": "g++",
+    "description": "GNU C++ compiler",
+    "usage": "g++ -o <output> <input>",
+    "language": "Bash"
+  },
+  {
+    "name": "history",
+    "description": "Display command history",
+    "usage": "history",
+    "language": "Zsh"
+  },
+  {
+    "name": "alias",
+    "description": "Display or create aliases",
+    "usage": "alias",
+    "language": "Zsh"
+  },
+  {
+    "name": "gdb",
+    "description": "GNU Debugger",
+    "usage": "gdb <executable>",
+    "language": "C/C++"
+  },
+  {
+    "name": "clang",
+    "description": "C/C++ compiler",
+    "usage": "clang main.cpp -o main",
+    "language": "C/C++"
+  },
+  {
+    "name": "cmake",
+    "description": "Cross-platform build system",
+    "usage": "cmake .",
+    "language": "Cmake"
+  },
+  {
+    "name": "go run",
+    "description": "Run a Go program",
+    "usage": "go run main.go",
+    "language": "Go"
+  },
+  {
+    "name": "go build",
+    "description": "Build a Go program",
+    "usage": "go build main.go",
+    "language": "Go"
+  },
+  {
+    "name": "javac",
+    "description": "Java compiler",
+    "usage": "javac Main.java",
+    "language": "Java"
+  },
+  {
+    "name": "java",
+    "description": "Run a Java program",
+    "usage": "java Main",
+    "language": "Java"
+  },
+  {
+    "name": "mvn",
+    "description": "Apache Maven build tool",
+    "usage": "mvn clean install",
+    "language": "Java"
+  },
+  {
+    "name": "gradle",
+    "description": "Gradle build tool",
+    "usage": "gradle build",
+    "language": "Gradle"
+  },
+  {
+    "name": "dotnet build",
+    "description": ".NET build command",
+    "usage": "dotnet build",
+    "language": ".Net"
+  },
+  {
+    "name": "dotnet run",
+    "description": ".NET run command",
+    "usage": "dotnet run",
+    "language": ".Net"
+  },
+  {
+    "name": "ruby",
+    "description": "Run a Ruby script",
+    "usage": "ruby script.rb",
+    "language": "Ruby"
+  },
+  {
+    "name": "rails",
+    "description": "Ruby on Rails command-line tool",
+    "usage": "rails server",
+    "language": "Ruby"
+  },
+  {
+    "name": "perl",
+    "description": "Run a Perl script",
+    "usage": "perl script.pl",
+    "language": "Perl"
+  },
+  {
+    "name": "php",
+    "description": "PHP command line interpreter",
+    "usage": "php script.php",
+    "language": "PHP"
+  },
+  {
+    "name": "lua",
+    "description": "Lua command line interpreter",
+    "usage": "lua script.lua",
+    "language": "Lua"
+  },
+  {
+    "name": "terraform apply",
+    "description": "Apply Terraform configurations",
+    "usage": "terraform apply",
+    "language": "Terraform"
+  },
+  {
+    "name": "terraform init",
+    "description": "Initialize a Terraform working directory",
+    "usage": "terraform init",
+    "language": "Terraform"
+  },
+  {
+    "name": "terraform plan",
+    "description": "Show changes required by the current configuration",
+    "usage": "terraform plan",
+    "language": "Terraform"
+  },
+  {
+    "name": "kubectl apply",
+    "description": "Apply a configuration to a resource by filename or stdin",
+    "usage": "kubectl apply -f deployment.yaml",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get pods",
+    "description": "Display one or many resources",
+    "usage": "kubectl get pods",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "aws s3 cp",
+    "description": "Copy files to and from S3",
+    "usage": "aws s3 cp file.txt s3://bucket/file.txt",
+    "language": "AWS CLI"
+  },
+  {
+    "name": "aws ec2 run-instances",
+    "description": "Launch one or more EC2 instances",
+    "usage": "aws ec2 run-instances --image-id ami-xxxxxxxx --count 1 --instance-type t2.micro",
+    "language": "AWS CLI"
+  },
+  {
+    "name": "az vm create",
+    "description": "Create a virtual machine",
+    "usage": "az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --admin-username azureuser --generate-ssh-keys",
+    "language": "Azure Cli"
+  },
+  {
+    "name": "az storage blob upload",
+    "description": "Upload a blob to a storage container",
+    "usage": "az storage blob upload --container-name mycontainer --file myfile.txt --name myfile.txt",
+    "language": "Azure Cli"
+  },
+  {
+    "name": "gcloud compute instances create",
+    "description": "Create Google Compute Engine virtual machine instances",
+    "usage": "gcloud compute instances create myinstance --zone us-central1-a",
+    "language": "Google Cloud Cli"
+  },
+  {
+    "name": "gcloud storage cp",
+    "description": "Copy local files or cloud objects",
+    "usage": "gcloud storage cp file.txt gs://my-bucket/file.txt",
+    "language": "Google Cloud Cli"
+  },
+  {
+    "name": "tar",
+    "description": "Archive files",
+    "usage": "tar -cvf archive.tar <files>",
+    "language": "Bash"
+  },
+  {
+    "name": "rsync",
+    "description": "Synchronize files and directories between two locations",
+    "usage": "rsync -avz <source> <destination>",
+    "language": "Bash"
+  },
+  {
+    "name": "scp",
+    "description": "Securely copy files between hosts",
+    "usage": "scp <file> <user>@<host>:<destination>",
+    "language": "Bash"
+  },
+  {
+    "name": "git stash",
+    "description": "Temporarily save changes",
+    "usage": "git stash",
+    "language": "Git"
+  },
+  {
+    "name": "git rebase",
+    "description": "Reapply commits on top of another branch",
+    "usage": "git rebase <branch>",
+    "language": "Git"
+  },
+  {
+    "name": "python -m venv",
+    "description": "Create a virtual environment",
+    "usage": "python -m venv <env_name>",
+    "language": "Python"
+  },
+  {
+    "name": "source venv/bin/activate",
+    "description": "Activate Virtual environment",
+    "usage": "source venv/bin/activate",
+    "language": "Bash"
+  },
+  {
+    "name": "rm -rf venv",
+    "description": "Remove the virtual environment (Linux/macOS)",
+    "usage": "rm -rf venv",
+    "language": "Bash"
+  },
+  {
+    "name": "rmdir /s /q venv",
+    "description": "Remove the virtual environment (Windows CMD)",
+    "usage": "rmdir /s /q venv",
+    "language": "Batch"
+  },
+  {
+    "name": "venv\\Scripts\\activate",
+    "description": "Activate Virtual environment (Windows - CMD)",
+    "usage": "venv\\Scripts\\activate",
+    "language": "Batch"
+  },
+  {
+    "name": "venv\\Scripts\\Activate.ps1",
+    "description": "Activate Virtual environment (Windows - PowerShell)",
+    "usage": "venv\\Scripts\\Activate.ps1",
+    "language": "Powershell"
+  },
+  {
+    "name": "pip freeze",
+    "description": "Output installed packages in requirements format",
+    "usage": "pip freeze > requirements.txt",
+    "language": "Python"
+  },
+  {
+    "name": "npm init",
+    "description": "Initialize a new Node.js project",
+    "usage": "npm init",
+    "language": "JavaScript"
+  },
+  {
+    "name": "npm run",
+    "description": "Run a script defined in package.json",
+    "usage": "npm run <script>",
+    "language": "JavaScript"
+  },
+  {
+    "name": "docker-compose up",
+    "description": "Start Docker containers defined in docker-compose.yml",
+    "usage": "docker-compose up",
+    "language": "Docker"
+  },
+  {
+    "name": "docker logs",
+    "description": "View logs for a container",
+    "usage": "docker logs <container>",
+    "language": "Docker"
+  },
+  {
+    "name": "DROP DATABASE",
+    "description": "Delete a database",
+    "usage": "DROP DATABASE <database>",
+    "language": "SQL"
+  },
+  {
+    "name": "JOIN",
+    "description": "Combine rows from two or more tables",
+    "usage": "SELECT * FROM table1 JOIN table2 ON table1.id = table2.id",
+    "language": "SQL"
+  },
+  {
+    "name": "kubectl logs",
+    "description": "Print logs from a container in a pod",
+    "usage": "kubectl logs <pod>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl delete",
+    "description": "Delete resources",
+    "usage": "kubectl delete <resource> <name>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "terraform destroy",
+    "description": "Destroy Terraform-managed infrastructure",
+    "usage": "terraform destroy",
+    "language": "Terraform"
+  },
+  {
+    "name": "aws s3 ls",
+    "description": "List S3 buckets or objects",
+    "usage": "aws s3 ls s3://bucket",
+    "language": "AWS CLI"
+  },
+  {
+    "name": "az group create",
+    "description": "Create a resource group in Azure",
+    "usage": "az group create --name myResourceGroup --location eastus",
+    "language": "Azure Cli"
+  },
+  {
+    "name": "jq",
+    "description": "Command-line JSON processor",
+    "usage": "jq '.key' <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "yarn",
+    "description": "Package manager for JavaScript",
+    "usage": "yarn add <package>",
+    "language": "JavaScript"
+  },
+  {
+    "name": "ln",
+    "description": "Create links between files",
+    "usage": "ln -s <target> <link_name>",
+    "language": "Bash"
+  },
+  {
+    "name": "du",
+    "description": "Estimate file space usage",
+    "usage": "du -sh <directory>",
+    "language": "Bash"
+  },
+  {
+    "name": "ps",
+    "description": "Display information about running processes",
+    "usage": "ps aux",
+    "language": "Bash"
+  },
+  {
+    "name": "kill",
+    "description": "Terminate processes by ID",
+    "usage": "kill <pid>",
+    "language": "Bash"
+  },
+  {
+    "name": "killall",
+    "description": "Terminate processes by name",
+    "usage": "killall <process_name>",
+    "language": "Bash"
+  },
+  {
+    "name": "crontab",
+    "description": "Schedule tasks to run periodically",
+    "usage": "crontab -e",
+    "language": "Bash"
+  },
+  {
+    "name": "env",
+    "description": "Display environment variables",
+    "usage": "env",
+    "language": "Bash"
+  },
+  {
+    "name": "export",
+    "description": "Set environment variables",
+    "usage": "export VAR_NAME=value",
+    "language": "Bash"
+  },
+  {
+    "name": "unset",
+    "description": "Unset values of shell variables",
+    "usage": "unset VARIABLE",
+    "language": "Bash"
+  },
+  {
+    "name": "which",
+    "description": "Locate a command in the PATH",
+    "usage": "which <command>",
+    "language": "Bash"
+  },
+  {
+    "name": "whereis",
+    "description": "Locate the binary, source, and manual pages for a command",
+    "usage": "whereis <command>",
+    "language": "Bash"
+  },
+  {
+    "name": "locate",
+    "description": "Find files by name",
+    "usage": "locate <filename>",
+    "language": "Bash"
+  },
+  {
+    "name": "updatedb",
+    "description": "Update the database for locate",
+    "usage": "updatedb",
+    "language": "Bash"
+  },
+  {
+    "name": "tee",
+    "description": "Read from standard input and write to standard output and files",
+    "usage": "command | tee <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "cut",
+    "description": "Remove sections from each line of files",
+    "usage": "cut -d',' -f1 <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "tr",
+    "description": "Translate or delete characters",
+    "usage": "tr 'a-z' 'A-Z' < <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "diff",
+    "description": "Compare files line by line",
+    "usage": "diff <file1> <file2>",
+    "language": "Bash"
+  },
+  {
+    "name": "patch",
+    "description": "Apply a diff file to an original",
+    "usage": "patch <file> < diff_file",
+    "language": "Bash"
+  },
+  {
+    "name": "xargs",
+    "description": "Build and execute command lines from standard input",
+    "usage": "find . -name '*.txt' | xargs rm",
+    "language": "Bash"
+  },
+  {
+    "name": "nohup",
+    "description": "Run a command immune to hangups",
+    "usage": "nohup <command> &",
+    "language": "Bash"
+  },
+  {
+    "name": "bg",
+    "description": "Resume a job in the background",
+    "usage": "bg",
+    "language": "Bash"
+  },
+  {
+    "name": "fg",
+    "description": "Bring a background job to the foreground",
+    "usage": "fg",
+    "language": "Bash"
+  },
+  {
+    "name": "jobs",
+    "description": "List active jobs",
+    "usage": "jobs",
+    "language": "Bash"
+  },
+  {
+    "name": "at",
+    "description": "Schedule a one-time task",
+    "usage": "at now + 5 minutes",
+    "language": "Bash"
+  },
+  {
+    "name": "watch",
+    "description": "Execute a program periodically",
+    "usage": "watch -n 1 <command>",
+    "language": "Bash"
+  },
+  {
+    "name": "time",
+    "description": "Measure command execution time",
+    "usage": "time <command>",
+    "language": "Bash"
+  },
+  {
+    "name": "ssh-keygen",
+    "description": "Generate SSH keys",
+    "usage": "ssh-keygen -t rsa -b 4096",
+    "language": "Bash"
+  },
+  {
+    "name": "ssh-copy-id",
+    "description": "Copy SSH keys to a remote server",
+    "usage": "ssh-copy-id <user>@<host>",
+    "language": "Bash"
+  },
+  {
+    "name": "lsof",
+    "description": "List open files and the processes that opened them",
+    "usage": "lsof",
+    "language": "Bash"
+  },
+  {
+    "name": "strace",
+    "description": "Trace system calls and signals",
+    "usage": "strace <command>",
+    "language": "Bash"
+  },
+  {
+    "name": "nc",
+    "description": "Netcat - networking utility",
+    "usage": "nc -l <port>",
+    "language": "Bash"
+  },
+  {
+    "name": "telnet",
+    "description": "Connect to a remote host using Telnet",
+    "usage": "telnet <host> <port>",
+    "language": "Bash"
+  },
+  {
+    "name": "w",
+    "description": "Show who is logged on and what they are doing",
+    "usage": "w",
+    "language": "Bash"
+  },
+  {
+    "name": "who",
+    "description": "Show who is logged on",
+    "usage": "who",
+    "language": "Bash"
+  },
+  {
+    "name": "last",
+    "description": "Show listing of last logged-in users",
+    "usage": "last",
+    "language": "Bash"
+  },
+  {
+    "name": "passwd",
+    "description": "Change user password",
+    "usage": "passwd",
+    "language": "Bash"
+  },
+  {
+    "name": "chroot",
+    "description": "Run a command with a different root directory",
+    "usage": "chroot <new_root> <command>",
+    "language": "Bash"
+  },
+  {
+    "name": "mount",
+    "description": "Mount a filesystem",
+    "usage": "mount <device> <directory>",
+    "language": "Bash"
+  },
+  {
+    "name": "umount",
+    "description": "Unmount a filesystem",
+    "usage": "umount <directory>",
+    "language": "Bash"
+  },
+  {
+    "name": "dd",
+    "description": "Convert and copy a file",
+    "usage": "dd if=<input_file> of=<output_file>",
+    "language": "Bash"
+  },
+  {
+    "name": "shred",
+    "description": "Overwrite a file to hide its contents",
+    "usage": "shred -u <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "base64",
+    "description": "Encode or decode data in Base64",
+    "usage": "base64 <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "openssl",
+    "description": "Cryptography and SSL/TLS toolkit",
+    "usage": "openssl enc -aes-256-cbc -in <file> -out <file.enc>",
+    "language": "Bash"
+  },
+  {
+    "name": "hostname",
+    "description": "Show or set the system's host name",
+    "usage": "hostname",
+    "language": "Bash"
+  },
+  {
+    "name": "uname",
+    "description": "Print system information",
+    "usage": "uname -a",
+    "language": "Bash"
+  },
+  {
+    "name": "dmesg",
+    "description": "Print or control the kernel ring buffer",
+    "usage": "dmesg",
+    "language": "Bash"
+  },
+  {
+    "name": "sysctl",
+    "description": "Configure kernel parameters at runtime",
+    "usage": "sysctl -a",
+    "language": "Bash"
+  },
+  {
+    "name": "service",
+    "description": "Run a system V init script",
+    "usage": "service <service_name> start",
+    "language": "Bash"
+  },
+  {
+    "name": "systemctl",
+    "description": "Control the systemd system and service manager",
+    "usage": "systemctl start <service_name>",
+    "language": "Bash"
+  },
+  {
+    "name": "journalctl",
+    "description": "Query the systemd journal",
+    "usage": "journalctl -xe",
+    "language": "Bash"
+  },
+  {
+    "name": "ip",
+    "description": "Show or manipulate routing, devices, and tunnels",
+    "usage": "ip addr show",
+    "language": "Bash"
+  },
+  {
+    "name": "ss",
+    "description": "Display socket statistics",
+    "usage": "ss -tuln",
+    "language": "Bash"
+  },
+  {
+    "name": "nmap",
+    "description": "Network exploration tool and security scanner",
+    "usage": "nmap <host>",
+    "language": "Bash"
+  },
+  {
+    "name": "tcpdump",
+    "description": "Capture and analyze network traffic",
+    "usage": "tcpdump -i <interface>",
+    "language": "Bash"
+  },
+  {
+    "name": "ufw",
+    "description": "Uncomplicated firewall",
+    "usage": "ufw allow <port>",
+    "language": "Bash"
+  },
+  {
+    "name": "iptables",
+    "description": "Administration tool for IPv4 packet filtering and NAT",
+    "usage": "iptables -L",
+    "language": "Bash"
+  },
+  {
+    "name": "fail2ban-client",
+    "description": "Ban hosts that cause multiple authentication errors",
+    "usage": "fail2ban-client status",
+    "language": "Bash"
+  },
+  {
+    "name": "logrotate",
+    "description": "Rotate, compress, and remove log files",
+    "usage": "logrotate /etc/logrotate.conf",
+    "language": "Bash"
+  },
+  {
+    "name": "cron",
+    "description": "Daemon to execute scheduled commands",
+    "usage": "cron",
+    "language": "Bash"
+  },
+  {
+    "name": "atq",
+    "description": "Display the user's pending jobs",
+    "usage": "atq",
+    "language": "Bash"
+  },
+  {
+    "name": "atrm",
+    "description": "Remove jobs from the at queue",
+    "usage": "atrm <job_id>",
+    "language": "Bash"
+  },
+  {
+    "name": "batch",
+    "description": "Queue, examine, or delete jobs for later execution",
+    "usage": "batch",
+    "language": "Bash"
+  },
+  {
+    "name": "wall",
+    "description": "Send a message to all users",
+    "usage": "wall <message>",
+    "language": "Bash"
+  },
+  {
+    "name": "write",
+    "description": "Send a message to another user",
+    "usage": "write <user>",
+    "language": "Bash"
+  },
+  {
+    "name": "mesg",
+    "description": "Control write access to your terminal",
+    "usage": "mesg y",
+    "language": "Bash"
+  },
+  {
+    "name": "talk",
+    "description": "Talk to another user",
+    "usage": "talk <user>",
+    "language": "Bash"
+  },
+  {
+    "name": "finger",
+    "description": "User information lookup program",
+    "usage": "finger <user>",
+    "language": "Bash"
+  },
+  {
+    "name": "lastlog",
+    "description": "Reports the most recent login of all users or of a given user",
+    "usage": "lastlog",
+    "language": "Bash"
+  },
+  {
+    "name": "whoami",
+    "description": "Print effective user ID",
+    "usage": "whoami",
+    "language": "Bash"
+  },
+  {
+    "name": "id",
+    "description": "Print real and effective user and group IDs",
+    "usage": "id",
+    "language": "Bash"
+  },
+  {
+    "name": "groups",
+    "description": "Print group memberships",
+    "usage": "groups",
+    "language": "Bash"
+  },
+  {
+    "name": "newgrp",
+    "description": "Change to a new group",
+    "usage": "newgrp <group>",
+    "language": "Bash"
+  },
+  {
+    "name": "chage",
+    "description": "Change user password expiry information",
+    "usage": "chage <user>",
+    "language": "Bash"
+  },
+  {
+    "name": "usermod",
+    "description": "Modify a user account",
+    "usage": "usermod -aG <group> <user>",
+    "language": "Bash"
+  },
+  {
+    "name": "useradd",
+    "description": "Create a new user or update default new user information",
+    "usage": "useradd <user>",
+    "language": "Bash"
+  },
+  {
+    "name": "userdel",
+    "description": "Delete a user account and related files",
+    "usage": "userdel <user>",
+    "language": "Bash"
+  },
+  {
+    "name": "groupadd",
+    "description": "Create a new group",
+    "usage": "groupadd <group>",
+    "language": "Bash"
+  },
+  {
+    "name": "groupdel",
+    "description": "Delete a group",
+    "usage": "groupdel <group>",
+    "language": "Bash"
+  },
+  {
+    "name": "groupmod",
+    "description": "Modify a group",
+    "usage": "groupmod -n <new_name> <old_name>",
+    "language": "Bash"
+  },
+  {
+    "name": "visudo",
+    "description": "Edit the sudoers file",
+    "usage": "visudo",
+    "language": "Bash"
+  },
+  {
+    "name": "sudoedit",
+    "description": "Edit files as another user",
+    "usage": "sudoedit <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "su",
+    "description": "Change user ID or become superuser",
+    "usage": "su <user>",
+    "language": "Bash"
+  },
+  {
+    "name": "adduser",
+    "description": "Add a user to the system",
+    "usage": "adduser <user>",
+    "language": "Bash"
+  },
+  {
+    "name": "deluser",
+    "description": "Remove a user from the system",
+    "usage": "deluser <user>",
+    "language": "Bash"
+  },
+  {
+    "name": "addgroup",
+    "description": "Add a group to the system",
+    "usage": "addgroup <group>",
+    "language": "Bash"
+  },
+  {
+    "name": "delgroup",
+    "description": "Remove a group from the system",
+    "usage": "delgroup <group>",
+    "language": "Bash"
+  },
+  {
+    "name": "gpasswd",
+    "description": "Administer /etc/group and /etc/gshadow",
+    "usage": "gpasswd -a <user> <group>",
+    "language": "Bash"
+  },
+  {
+    "name": "pwck",
+    "description": "Verify the integrity of password files",
+    "usage": "pwck",
+    "language": "Bash"
+  },
+  {
+    "name": "grpck",
+    "description": "Verify the integrity of group files",
+    "usage": "grpck",
+    "language": "Bash"
+  },
+  {
+    "name": "vipw",
+    "description": "Edit the password file",
+    "usage": "vipw",
+    "language": "Bash"
+  },
+  {
+    "name": "vigr",
+    "description": "Edit the group file",
+    "usage": "vigr",
+    "language": "Bash"
+  },
+  {
+    "name": "newusers",
+    "description": "Update and create new users in batch",
+    "usage": "newusers <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "chpasswd",
+    "description": "Update passwords in batch mode",
+    "usage": "echo 'username:newpassword' | chpasswd",
+    "language": "Bash"
+  },
+  {
+    "name": "pwconv",
+    "description": "Create shadow from passwd and optionally move passwords",
+    "usage": "pwconv",
+    "language": "Bash"
+  },
+  {
+    "name": "pwunconv",
+    "description": "Convert shadow passwords back to passwd",
+    "usage": "pwunconv",
+    "language": "Bash"
+  },
+  {
+    "name": "grpconv",
+    "description": "Create gshadow from group and optionally move group passwords",
+    "usage": "grpconv",
+    "language": "Bash"
+  },
+  {
+    "name": "grpunconv",
+    "description": "Convert gshadow passwords back to group",
+    "usage": "grpunconv",
+    "language": "Bash"
+  },
+  {
+    "name": "logsave",
+    "description": "Save the output of a command to a log file",
+    "usage": "logsave <logfile> <command>",
+    "language": "Bash"
+  },
+  {
+    "name": "mkfifo",
+    "description": "Create named pipes (FIFOs)",
+    "usage": "mkfifo <fifo_name>",
+    "language": "Bash"
+  },
+  {
+    "name": "rename",
+    "description": "Rename multiple files",
+    "usage": "rename 's/old/new/' *.txt",
+    "language": "Bash"
+  },
+  {
+    "name": "split",
+    "description": "Split a file into pieces",
+    "usage": "split -b 10M <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "csplit",
+    "description": "Split a file into sections based on context",
+    "usage": "csplit <file> '/pattern/'",
+    "language": "Bash"
+  },
+  {
+    "name": "shuf",
+    "description": "Generate random permutations",
+    "usage": "shuf <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "seq",
+    "description": "Print a sequence of numbers",
+    "usage": "seq 1 10",
+    "language": "Bash"
+  },
+  {
+    "name": "factor",
+    "description": "Print prime factors of a number",
+    "usage": "factor 42",
+    "language": "Bash"
+  },
+  {
+    "name": "bc",
+    "description": "Arbitrary precision calculator",
+    "usage": "echo '5 + 5' | bc",
+    "language": "Bash"
+  },
+  {
+    "name": "dc",
+    "description": "Desk calculator",
+    "usage": "dc",
+    "language": "Bash"
+  },
+  {
+    "name": "expr",
+    "description": "Evaluate expressions",
+    "usage": "expr 5 + 5",
+    "language": "Bash"
+  },
+  {
+    "name": "units",
+    "description": "Convert between units of measurement",
+    "usage": "units",
+    "language": "Bash"
+  },
+  {
+    "name": "cal",
+    "description": "Display a calendar",
+    "usage": "cal",
+    "language": "Bash"
+  },
+  {
+    "name": "date",
+    "description": "Display or set the system date and time",
+    "usage": "date",
+    "language": "Bash"
+  },
+  {
+    "name": "timedatectl",
+    "description": "Control the system time and date",
+    "usage": "timedatectl",
+    "language": "Bash"
+  },
+  {
+    "name": "hwclock",
+    "description": "Query or set the hardware clock",
+    "usage": "hwclock",
+    "language": "Bash"
+  },
+  {
+    "name": "ntpdate",
+    "description": "Set the system time via NTP",
+    "usage": "ntpdate <server>",
+    "language": "Bash"
+  },
+  {
+    "name": "tzselect",
+    "description": "Select a time zone",
+    "usage": "tzselect",
+    "language": "Bash"
+  },
+  {
+    "name": "locale",
+    "description": "Get locale-specific information",
+    "usage": "locale",
+    "language": "Bash"
+  },
+  {
+    "name": "localectl",
+    "description": "Control the system locale and keyboard layout",
+    "usage": "localectl",
+    "language": "Bash"
+  },
+  {
+    "name": "iconv",
+    "description": "Convert text file encoding",
+    "usage": "iconv -f UTF-8 -t ASCII <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "recode",
+    "description": "Convert file character encoding",
+    "usage": "recode UTF-8..ASCII <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "uuencode",
+    "description": "Encode a binary file for email transmission",
+    "usage": "uuencode <file> <name>",
+    "language": "Bash"
+  },
+  {
+    "name": "uudecode",
+    "description": "Decode a uuencoded file",
+    "usage": "uudecode <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "md5sum",
+    "description": "Compute and check MD5 message digest",
+    "usage": "md5sum <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "sha1sum",
+    "description": "Compute and check SHA1 message digest",
+    "usage": "sha1sum <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "sha256sum",
+    "description": "Compute and check SHA256 message digest",
+    "usage": "sha256sum <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "sha512sum",
+    "description": "Compute and check SHA512 message digest",
+    "usage": "sha512sum <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "cksum",
+    "description": "Print CRC checksum and byte count",
+    "usage": "cksum <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "sum",
+    "description": "Print checksum and block count",
+    "usage": "sum <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "b2sum",
+    "description": "Compute and check BLAKE2 message digest",
+    "usage": "b2sum <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "xxd",
+    "description": "Create a hex dump of a file",
+    "usage": "xxd <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "hexdump",
+    "description": "Display file contents in hexadecimal",
+    "usage": "hexdump <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "objdump",
+    "description": "Display information from object files",
+    "usage": "objdump -d <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "nm",
+    "description": "List symbols from object files",
+    "usage": "nm <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "strings",
+    "description": "Print printable strings in files",
+    "usage": "strings <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "strip",
+    "description": "Discard symbols from object files",
+    "usage": "strip <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "ar",
+    "description": "Create, modify, and extract from archives",
+    "usage": "ar rcs lib.a *.o",
+    "language": "Bash"
+  },
+  {
+    "name": "ranlib",
+    "description": "Generate index to archive",
+    "usage": "ranlib lib.a",
+    "language": "Bash"
+  },
+  {
+    "name": "ldd",
+    "description": "Print shared library dependencies",
+    "usage": "ldd <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "ldconfig",
+    "description": "Configure dynamic linker run-time bindings",
+    "usage": "ldconfig",
+    "language": "Bash"
+  },
+  {
+    "name": "ld",
+    "description": "GNU linker",
+    "usage": "ld -o <output> <object_files>",
+    "language": "Bash"
+  },
+  {
+    "name": "as",
+    "description": "GNU assembler",
+    "usage": "as -o <output> <input>",
+    "language": "Bash"
+  },
+  {
+    "name": "gcc",
+    "description": "GNU C compiler",
+    "usage": "gcc -o <output> <input>",
+    "language": "Bash"
+  },
+  {
+    "name": "valgrind",
+    "description": "Memory debugging and profiling",
+    "usage": "valgrind <executable>",
+    "language": "Bash"
+  },
+  {
+    "name": "ltrace",
+    "description": "Trace library calls",
+    "usage": "ltrace <executable>",
+    "language": "Bash"
+  },
+  {
+    "name": "perf",
+    "description": "Performance analysis tool",
+    "usage": "perf stat <executable>",
+    "language": "Bash"
+  },
+  {
+    "name": "systemtap",
+    "description": "System-wide tracing and probing",
+    "usage": "stap <script>",
+    "language": "Bash"
+  },
+  {
+    "name": "dtrace",
+    "description": "Dynamic tracing framework",
+    "usage": "dtrace <script>",
+    "language": "Bash"
+  },
+  {
+    "name": "bpftrace",
+    "description": "High-level tracing language for Linux eBPF",
+    "usage": "bpftrace <script>",
+    "language": "Bash"
+  },
+  {
+    "name": "tshark",
+    "description": "Network protocol analyzer",
+    "usage": "tshark -i <interface>",
+    "language": "Bash"
+  },
+  {
+    "name": "ncat",
+    "description": "Network swiss army knife",
+    "usage": "ncat -l <port>",
+    "language": "Bash"
+  },
+  {
+    "name": "socat",
+    "description": "Multipurpose relay",
+    "usage": "socat TCP-LISTEN:<port> STDOUT",
+    "language": "Bash"
+  },
+  {
+    "name": "netcat",
+    "description": "Networking utility for reading/writing network connections",
+    "usage": "netcat <host> <port>",
+    "language": "Bash"
+  },
+  {
+    "name": "sshfs",
+    "description": "Mount a remote filesystem over SSH",
+    "usage": "sshfs <user>@<host>:<remote_dir> <local_dir>",
+    "language": "Bash"
+  },
+  {
+    "name": "curlftpfs",
+    "description": "Mount a remote FTP filesystem",
+    "usage": "curlftpfs <ftp_url> <local_dir>",
+    "language": "Bash"
+  },
+  {
+    "name": "fuseiso",
+    "description": "Mount ISO files using FUSE",
+    "usage": "fuseiso <iso_file> <mount_point>",
+    "language": "Bash"
+  },
+  {
+    "name": "sshuttle",
+    "description": "Transparent proxy server over SSH",
+    "usage": "sshuttle -r <user>@<host> 0/0",
+    "language": "Bash"
+  },
+  {
+    "name": "autossh",
+    "description": "Automatically restart SSH sessions",
+    "usage": "autossh -M 0 <user>@<host>",
+    "language": "Bash"
+  },
+  {
+    "name": "mosh",
+    "description": "Mobile shell with roaming and persistent connections",
+    "usage": "mosh <user>@<host>",
+    "language": "Bash"
+  },
+  {
+    "name": "byobu",
+    "description": "Text-based window manager and terminal multiplexer",
+    "usage": "byobu",
+    "language": "Bash"
+  },
+  {
+    "name": "dtach",
+    "description": "Simple terminal multiplexer",
+    "usage": "dtach -A <socket> <command>",
+    "language": "Bash"
+  },
+  {
+    "name": "abduco",
+    "description": "Session management for terminal programs",
+    "usage": "abduco -c <session> <command>",
+    "language": "Bash"
+  },
+  {
+    "name": "dvtm",
+    "description": "Dynamic virtual terminal manager",
+    "usage": "dvtm",
+    "language": "Bash"
+  },
+  {
+    "name": "ratpoison",
+    "description": "Window manager without mouse dependency",
+    "usage": "ratpoison",
+    "language": "Bash"
+  },
+  {
+    "name": "st",
+    "description": "Simple terminal",
+    "usage": "st",
+    "language": "Bash"
+  },
+  {
+    "name": "xterm",
+    "description": "Terminal emulator for X",
+    "usage": "xterm",
+    "language": "Bash"
+  },
+  {
+    "name": "rxvt",
+    "description": "Lightweight terminal emulator",
+    "usage": "rxvt",
+    "language": "Bash"
+  },
+  {
+    "name": "urxvt",
+    "description": "Unicode-enabled rxvt",
+    "usage": "urxvt",
+    "language": "Bash"
+  },
+  {
+    "name": "alacritty",
+    "description": "Cross-platform, GPU-accelerated terminal emulator",
+    "usage": "alacritty",
+    "language": "Bash"
+  },
+  {
+    "name": "kitty",
+    "description": "GPU-accelerated terminal emulator",
+    "usage": "kitty",
+    "language": "Bash"
+  },
+  {
+    "name": "terminator",
+    "description": "Multiple GNOME terminals in one window",
+    "usage": "terminator",
+    "language": "Bash"
+  },
+  {
+    "name": "tilix",
+    "description": "Tiling terminal emulator",
+    "usage": "tilix",
+    "language": "Bash"
+  },
+  {
+    "name": "gnome-terminal",
+    "description": "GNOME terminal emulator",
+    "usage": "gnome-terminal",
+    "language": "Bash"
+  },
+  {
+    "name": "konsole",
+    "description": "KDE terminal emulator",
+    "usage": "konsole",
+    "language": "Bash"
+  },
+  {
+    "name": "xfce4-terminal",
+    "description": "Xfce terminal emulator",
+    "usage": "xfce4-terminal",
+    "language": "Bash"
+  },
+  {
+    "name": "lxterminal",
+    "description": "LXDE terminal emulator",
+    "usage": "lxterminal",
+    "language": "Bash"
+  },
+  {
+    "name": "mate-terminal",
+    "description": "MATE terminal emulator",
+    "usage": "mate-terminal",
+    "language": "Bash"
+  },
+  {
+    "name": "terminology",
+    "description": "Enlightenment terminal emulator",
+    "usage": "terminology",
+    "language": "Bash"
+  },
+  {
+    "name": "cool-retro-term",
+    "description": "Terminal emulator with old-school aesthetics",
+    "usage": "cool-retro-term",
+    "language": "Bash"
+  },
+  {
+    "name": "guake",
+    "description": "Drop-down terminal for GNOME",
+    "usage": "guake",
+    "language": "Bash"
+  },
+  {
+    "name": "yakuake",
+    "description": "Drop-down terminal for KDE",
+    "usage": "yakuake",
+    "language": "Bash"
+  },
+  {
+    "name": "tilda",
+    "description": "Drop-down terminal",
+    "usage": "tilda",
+    "language": "Bash"
+  },
+  {
+    "name": "sakura",
+    "description": "Simple terminal emulator based on GTK",
+    "usage": "sakura",
+    "language": "Bash"
+  },
+  {
+    "name": "eterm",
+    "description": "Enlightenment terminal emulator",
+    "usage": "eterm",
+    "language": "Bash"
+  },
+  {
+    "name": "roxterm",
+    "description": "GTK terminal emulator",
+    "usage": "roxterm",
+    "language": "Bash"
+  },
+  {
+    "name": "termit",
+    "description": "Simple terminal emulator",
+    "usage": "termit",
+    "language": "Bash"
+  },
+  {
+    "name": "docker-compose down",
+    "description": "Stop and remove containers, networks, images, and volumes",
+    "usage": "docker-compose down",
+    "language": "Docker"
+  },
+  {
+    "name": "docker exec",
+    "description": "Run a command in a running container",
+    "usage": "docker exec <container> <command>",
+    "language": "Docker"
+  },
+  {
+    "name": "docker network",
+    "description": "Manage Docker networks",
+    "usage": "docker network <subcommand>",
+    "language": "Docker"
+  },
+  {
+    "name": "docker volume",
+    "description": "Manage Docker volumes",
+    "usage": "docker volume <subcommand>",
+    "language": "Docker"
+  },
+  {
+    "name": "kubectl describe",
+    "description": "Show details of a specific resource or group of resources",
+    "usage": "kubectl describe <type> <name>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl edit",
+    "description": "Edit a resource on the server",
+    "usage": "kubectl edit <type> <name>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl scale",
+    "description": "Set a new size for a Deployment, ReplicaSet, or Replication Controller",
+    "usage": "kubectl scale <type> <name> --replicas=<count>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl port-forward",
+    "description": "Forward one or more local ports to a pod",
+    "usage": "kubectl port-forward <pod> <localPort>:<podPort>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "aws s3 sync",
+    "description": "Sync directories and S3 prefixes",
+    "usage": "aws s3 sync <source> <destination>",
+    "language": "AWS CLI"
+  },
+  {
+    "name": "aws ec2 describe-instances",
+    "description": "Describe EC2 instances",
+    "usage": "aws ec2 describe-instances",
+    "language": "AWS CLI"
+  },
+  {
+    "name": "az vm list",
+    "description": "List virtual machines",
+    "usage": "az vm list --resource-group <resource-group>",
+    "language": "Azure Cli"
+  },
+  {
+    "name": "gcloud compute ssh",
+    "description": "SSH into a Google Compute Engine instance",
+    "usage": "gcloud compute ssh <instance-name>",
+    "language": "Google Cloud Cli"
+  },
+  {
+    "name": "ifconfig",
+    "description": "Configure a network interface",
+    "usage": "ifconfig <interface> <options>",
+    "language": "Bash"
+  },
+  {
+    "name": "route",
+    "description": "Show or manipulate the IP routing table",
+    "usage": "route -n",
+    "language": "Bash"
+  },
+  {
+    "name": "iptables-save",
+    "description": "Dump iptables rules to stdout",
+    "usage": "iptables-save",
+    "language": "Bash"
+  },
+  {
+    "name": "wireshark",
+    "description": "Network protocol analyzer",
+    "usage": "wireshark",
+    "language": "Wireshark"
+  },
+  {
+    "name": "vmstat",
+    "description": "Report virtual memory statistics",
+    "usage": "vmstat 1",
+    "language": "Bash"
+  },
+  {
+    "name": "iostat",
+    "description": "Report CPU statistics and input/output statistics for devices and partitions",
+    "usage": "iostat -xz 1",
+    "language": "Bash"
+  },
+  {
+    "name": "sar",
+    "description": "Collect, report, or save system activity information",
+    "usage": "sar 1 1",
+    "language": "Bash"
+  },
+  {
+    "name": "paste",
+    "description": "Merge lines of files",
+    "usage": "paste <file1> <file2>",
+    "language": "Bash"
+  },
+  {
+    "name": "GRANT",
+    "description": "Grant privileges to a user",
+    "usage": "GRANT ALL PRIVILEGES ON database.table TO 'user'@'host'",
+    "language": "SQL"
+  },
+  {
+    "name": "REVOKE",
+    "description": "Revoke privileges from a user",
+    "usage": "REVOKE ALL PRIVILEGES ON database.table FROM 'user'@'host'",
+    "language": "SQL"
+  },
+  {
+    "name": "SHOW TABLES",
+    "description": "List tables in a database",
+    "usage": "SHOW TABLES FROM database",
+    "language": "SQL"
+  },
+  {
+    "name": "DESCRIBE",
+    "description": "Describe the structure of a table",
+    "usage": "DESCRIBE table",
+    "language": "SQL"
+  },
+  {
+    "name": "python -m http.server",
+    "description": "Start a simple HTTP server",
+    "usage": "python -m http.server 8000",
+    "language": "Python"
+  },
+  {
+    "name": "node --version",
+    "description": "Check Node.js version",
+    "usage": "node --version",
+    "language": "JavaScript"
+  },
+  {
+    "name": "go version",
+    "description": "Check Go version",
+    "usage": "go version",
+    "language": "Go"
+  },
+  {
+    "name": "rustup update",
+    "description": "Update Rust toolchain",
+    "usage": "rustup update",
+    "language": "Rust"
+  },
+  {
+    "name": "ansible-playbook",
+    "description": "Run Ansible playbooks",
+    "usage": "ansible-playbook <playbook.yml>",
+    "language": "Ansible"
+  },
+  {
+    "name": "set",
+    "description": "Set or unset values of shell options and positional parameters",
+    "usage": "set -x",
+    "language": "Bash"
+  },
+  {
+    "name": "yum",
+    "description": "Package manager for RHEL/CentOS",
+    "usage": "yum install <package>",
+    "language": "Bash"
+  },
+  {
+    "name": "pacman",
+    "description": "Package manager for Arch Linux",
+    "usage": "pacman -S <package>",
+    "language": "Bash"
+  },
+  {
+    "name": "zypper",
+    "description": "Package manager for openSUSE",
+    "usage": "zypper install <package>",
+    "language": "Bash"
+  },
+  {
+    "name": "snap",
+    "description": "Package manager for snap packages",
+    "usage": "snap install <package>",
+    "language": "Bash"
+  },
+  {
+    "name": "vagrant up",
+    "description": "Start and provision the vagrant environment",
+    "usage": "vagrant up",
+    "language": "Vagrant"
+  },
+  {
+    "name": "vagrant ssh",
+    "description": "SSH into a running vagrant machine",
+    "usage": "vagrant ssh",
+    "language": "Vagrant"
+  },
+  {
+    "name": "virsh",
+    "description": "Manage virtual machines with libvirt",
+    "usage": "virsh list",
+    "language": "Bash"
+  },
+  {
+    "name": "VBoxManage",
+    "description": "Command-line interface for VirtualBox",
+    "usage": "VBoxManage list vms",
+    "language": "Bash"
+  },
+  {
+    "name": "httpie",
+    "description": "Command-line HTTP client",
+    "usage": "httpie <URL>",
+    "language": "Bash"
+  },
+  {
+    "name": "csvkit",
+    "description": "Suite of command-line tools for working with CSV",
+    "usage": "csvcut -d',' -c1 <file.csv>",
+    "language": "Bash"
+  },
+  {
+    "name": "xsv",
+    "description": "Fast CSV command-line toolkit",
+    "usage": "xsv select 1 <file.csv>",
+    "language": "Bash"
+  },
+  {
+    "name": "pandas",
+    "description": "Data analysis library for Python",
+    "usage": "python -c 'import pandas as pd; df = pd.read_csv(\"file.csv\"); print(df.head())'",
+    "language": "Python"
+  },
+  {
+    "name": "tensorflow",
+    "description": "Open-source machine learning framework",
+    "usage": "python -c 'import tensorflow as tf; print(tf.__version__)'",
+    "language": "Python"
+  },
+  {
+    "name": "pytorch",
+    "description": "Open-source machine learning library",
+    "usage": "python -c 'import torch; print(torch.__version__)'",
+    "language": "Python"
+  },
+  {
+    "name": "scikit-learn",
+    "description": "Machine learning library for Python",
+    "usage": "python -c 'import sklearn; print(sklearn.__version__)'",
+    "language": "Python"
+  },
+  {
+    "name": "keras",
+    "description": "High-level neural networks API",
+    "usage": "python -c 'import keras; print(keras.__version__)'",
+    "language": "Python"
+  },
+  {
+    "name": "geth",
+    "description": "Go Ethereum client",
+    "usage": "geth --help",
+    "language": "Bash"
+  },
+  {
+    "name": "truffle",
+    "description": "Development framework for Ethereum",
+    "usage": "truffle init",
+    "language": "JavaScript"
+  },
+  {
+    "name": "solc",
+    "description": "Solidity compiler",
+    "usage": "solc --version",
+    "language": "Bash"
+  },
+  {
+    "name": "web3.js",
+    "description": "Ethereum JavaScript API",
+    "usage": "npm install web3",
+    "language": "JavaScript"
+  },
+  {
+    "name": "unity",
+    "description": "Game development platform",
+    "usage": "unity",
+    "language": "Unity"
+  },
+  {
+    "name": "unreal",
+    "description": "Game development engine",
+    "usage": "unrealengine",
+    "language": "Unreal"
+  },
+  {
+    "name": "godot",
+    "description": "Open-source game engine",
+    "usage": "godot",
+    "language": "Godot"
+  },
+  {
+    "name": "blender",
+    "description": "3D modeling and rendering software",
+    "usage": "blender",
+    "language": "Blender"
+  },
+  {
+    "name": "adb",
+    "description": "Android Debug Bridge",
+    "usage": "adb devices",
+    "language": "Bash"
+  },
+  {
+    "name": "fastlane",
+    "description": "Automation tool for iOS and Android development",
+    "usage": "fastlane init",
+    "language": "Ruby"
+  },
+  {
+    "name": "react-native",
+    "description": "Framework for building native apps using React",
+    "usage": "react-native init AwesomeProject",
+    "language": "JavaScript"
+  },
+  {
+    "name": "flutter",
+    "description": "UI toolkit for building natively compiled applications",
+    "usage": "flutter create my_app",
+    "language": "Dart"
+  },
+  {
+    "name": "mlflow",
+    "description": "Platform for managing the end-to-end machine learning lifecycle",
+    "usage": "mlflow ui",
+    "language": "Python"
+  },
+  {
+    "name": "kubeflow",
+    "description": "Machine learning toolkit for Kubernetes",
+    "usage": "kfctl apply -f <config_file>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "sagemaker",
+    "description": "AWS service for building, training, and deploying machine learning models",
+    "usage": "aws sagemaker create-notebook-instance --notebook-instance-name my-notebook",
+    "language": "AWS CLI"
+  },
+  {
+    "name": "databricks",
+    "description": "Unified data analytics platform",
+    "usage": "databricks clusters create --cluster-name my-cluster",
+    "language": "Bash"
+  },
+  {
+    "name": "jenkins",
+    "description": "Open-source automation server",
+    "usage": "jenkins",
+    "language": "Java"
+  },
+  {
+    "name": "gitlab-ci",
+    "description": "CI/CD tool integrated with GitLab",
+    "usage": "gitlab-ci-multi-runner run",
+    "language": "YAML"
+  },
+  {
+    "name": "circleci",
+    "description": "Continuous integration and delivery platform",
+    "usage": "circleci build",
+    "language": "YAML"
+  },
+  {
+    "name": "travis-ci",
+    "description": "Continuous integration service",
+    "usage": "travis lint",
+    "language": "YAML"
+  },
+  {
+    "name": "prometheus",
+    "description": "Monitoring system and time series database",
+    "usage": "prometheus --config.file=prometheus.yml",
+    "language": "Bash"
+  },
+  {
+    "name": "grafana",
+    "description": "Open-source platform for monitoring and observability",
+    "usage": "grafana-server",
+    "language": "Bash"
+  },
+  {
+    "name": "elk stack",
+    "description": "Elasticsearch, Logstash, and Kibana for log analysis",
+    "usage": "docker-compose up",
+    "language": "Docker"
+  },
+  {
+    "name": "splunk",
+    "description": "Platform for searching, monitoring, and analyzing machine-generated data",
+    "usage": "splunk start",
+    "language": "Bash"
+  },
+  {
+    "name": "nessus",
+    "description": "Vulnerability scanner",
+    "usage": "nessuscli adduser",
+    "language": "Bash"
+  },
+  {
+    "name": "openvas",
+    "description": "Open-source vulnerability scanner",
+    "usage": "openvas-start",
+    "language": "Bash"
+  },
+  {
+    "name": "nexpose",
+    "description": "Vulnerability management tool",
+    "usage": "nsc.sh",
+    "language": "Bash"
+  },
+  {
+    "name": "qualys",
+    "description": "Cloud-based security and compliance platform",
+    "usage": "qualys",
+    "language": "Qualys"
+  },
+  {
+    "name": "jupyter",
+    "description": "Open-source web application for creating and sharing documents that contain live code, equations, visualizations, and narrative text",
+    "usage": "jupyter notebook",
+    "language": "Python"
+  },
+  {
+    "name": "numpy",
+    "description": "Library for numerical computing in Python",
+    "usage": "python -c 'import numpy as np; print(np.__version__)'",
+    "language": "Python"
+  },
+  {
+    "name": "matplotlib",
+    "description": "Plotting library for Python",
+    "usage": "python -c 'import matplotlib.pyplot as plt; plt.plot([1, 2, 3, 4])'",
+    "language": "Python"
+  },
+  {
+    "name": "hadoop",
+    "description": "Framework for distributed storage and processing of large data sets",
+    "usage": "start-dfs.sh",
+    "language": "Bash"
+  },
+  {
+    "name": "spark",
+    "description": "Unified analytics engine for large-scale data processing",
+    "usage": "spark-submit my_app.py",
+    "language": "Bash"
+  },
+  {
+    "name": "kafka",
+    "description": "Distributed streaming platform",
+    "usage": "kafka-server-start.sh config/server.properties",
+    "language": "Bash"
+  },
+  {
+    "name": "hive",
+    "description": "Data warehouse software for querying and managing large datasets",
+    "usage": "hive",
+    "language": "SQL"
+  },
+  {
+    "name": "arduino",
+    "description": "Open-source electronics platform",
+    "usage": "arduino",
+    "language": "Arduino"
+  },
+  {
+    "name": "raspberrypi",
+    "description": "Small single-board computers",
+    "usage": "raspi-config",
+    "language": "Bash"
+  },
+  {
+    "name": "mqtt",
+    "description": "Lightweight messaging protocol for small sensors and mobile devices",
+    "usage": "mosquitto",
+    "language": "Bash"
+  },
+  {
+    "name": "node-red",
+    "description": "Flow-based development tool for visual programming",
+    "usage": "node-red",
+    "language": "JavaScript"
+  },
+  {
+    "name": "bitcoin-cli",
+    "description": "Command-line interface for Bitcoin",
+    "usage": "bitcoin-cli --version",
+    "language": "Bitcoin"
+  },
+  {
+    "name": "ethereum",
+    "description": "Open-source blockchain platform",
+    "usage": "geth --version",
+    "language": "Ethereum"
+  },
+  {
+    "name": "hyperledger",
+    "description": "Open-source blockchain framework",
+    "usage": "peer version",
+    "language": "Hyperledger"
+  },
+  {
+    "name": "solidity",
+    "description": "Programming language for writing smart contracts",
+    "usage": "solc --version",
+    "language": "Solidity"
+  },
+  {
+    "name": "black",
+    "description": "Python code formatter",
+    "usage": "black <file_or_directory>",
+    "language": "Python"
+  },
+  {
+    "name": "flake8",
+    "description": "Python linter for style and syntax errors",
+    "usage": "flake8 <file_or_directory>",
+    "language": "Python"
+  },
+  {
+    "name": "mypy",
+    "description": "Static type checker for Python",
+    "usage": "mypy <file_or_directory>",
+    "language": "Python"
+  },
+  {
+    "name": "pytest",
+    "description": "Python testing framework",
+    "usage": "pytest <test_file_or_directory>",
+    "language": "Python"
+  },
+  {
+    "name": "isort",
+    "description": "Python utility to sort imports",
+    "usage": "isort <file_or_directory>",
+    "language": "Python"
+  },
+  {
+    "name": "pipenv",
+    "description": "Python dependency management tool",
+    "usage": "pipenv install <package>",
+    "language": "Python"
+  },
+  {
+    "name": "poetry",
+    "description": "Python dependency and package management",
+    "usage": "poetry add <package>",
+    "language": "Python"
+  },
+  {
+    "name": "eslint",
+    "description": "JavaScript linter for identifying and fixing problems",
+    "usage": "eslint <file_or_directory>",
+    "language": "JavaScript"
+  },
+  {
+    "name": "prettier",
+    "description": "JavaScript code formatter",
+    "usage": "prettier --write <file_or_directory>",
+    "language": "JavaScript"
+  },
+  {
+    "name": "jest",
+    "description": "JavaScript testing framework",
+    "usage": "jest <test_file_or_directory>",
+    "language": "JavaScript"
+  },
+  {
+    "name": "babel",
+    "description": "JavaScript compiler for using next-generation JavaScript",
+    "usage": "babel <file_or_directory> --out-dir <output_directory>",
+    "language": "JavaScript"
+  },
+  {
+    "name": "webpack",
+    "description": "JavaScript module bundler",
+    "usage": "webpack --config <config_file>",
+    "language": "JavaScript"
+  },
+  {
+    "name": "rustfmt",
+    "description": "Rust code formatter",
+    "usage": "rustfmt <file_or_directory>",
+    "language": "Rust"
+  },
+  {
+    "name": "clippy",
+    "description": "Rust linter for catching common mistakes",
+    "usage": "cargo clippy",
+    "language": "Rust"
+  },
+  {
+    "name": "rust-analyzer",
+    "description": "Rust language server for IDE support",
+    "usage": "rust-analyzer",
+    "language": "Rust"
+  },
+  {
+    "name": "cargo-watch",
+    "description": "Rust utility to re-run Cargo commands on file changes",
+    "usage": "cargo watch -x 'check'",
+    "language": "Rust"
+  },
+  {
+    "name": "cargo-audit",
+    "description": "Rust utility to audit dependencies for vulnerabilities",
+    "usage": "cargo audit",
+    "language": "Rust"
+  },
+  {
+    "name": "cargo-expand",
+    "description": "Rust utility to expand macros in code",
+    "usage": "cargo expand",
+    "language": "Rust"
+  },
+  {
+    "name": "subl",
+    "description": "Open a file or directory in Sublime Text",
+    "usage": "subl <file_or_directory>",
+    "language": "Sublime"
+  },
+  {
+    "name": "subl --new-window",
+    "description": "Open a new Sublime Text window",
+    "usage": "subl --new-window <file_or_directory>",
+    "language": "Sublime"
+  },
+  {
+    "name": "subl --add",
+    "description": "Add a folder to the current Sublime Text window",
+    "usage": "subl --add <directory>",
+    "language": "Sublime"
+  },
+  {
+    "name": "subl --command",
+    "description": "Run a Sublime Text command",
+    "usage": "subl --command '<command_name>'",
+    "language": "Sublime"
+  },
+  {
+    "name": "subl --project",
+    "description": "Open a Sublime Text project",
+    "usage": "subl --project <project_file>",
+    "language": "Sublime"
+  },
+  {
+    "name": "subl --background",
+    "description": "Open Sublime Text in the background",
+    "usage": "subl --background",
+    "language": "Sublime"
+  },
+  {
+    "name": "subl --wait",
+    "description": "Wait for the file to be closed before returning",
+    "usage": "subl --wait <file>",
+    "language": "Sublime"
+  },
+  {
+    "name": "subl --help",
+    "description": "Display Sublime Text command-line help",
+    "usage": "subl --help",
+    "language": "Sublime"
+  },
+  {
+    "name": "kubectl apply -f",
+    "description": "Apply a configuration to a resource by filename or stdin",
+    "usage": "kubectl apply -f <filename>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl delete -f",
+    "description": "Delete a resource by filename or stdin",
+    "usage": "kubectl delete -f <filename>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get nodes",
+    "description": "List all nodes in the cluster",
+    "usage": "kubectl get nodes",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl describe node",
+    "description": "Show details of a specific node",
+    "usage": "kubectl describe node <node_name>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl top",
+    "description": "Display resource usage (CPU, memory) for nodes or pods",
+    "usage": "kubectl top node",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl exec",
+    "description": "Execute a command in a container",
+    "usage": "kubectl exec <pod_name> -- <command>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl cp",
+    "description": "Copy files and directories to and from containers",
+    "usage": "kubectl cp <pod_name>:<path> <local_path>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl config",
+    "description": "Modify kubeconfig files",
+    "usage": "kubectl config view",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl rollout",
+    "description": "Manage the rollout of a resource",
+    "usage": "kubectl rollout status deployment/<deployment_name>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl autoscale",
+    "description": "Auto-scale a deployment, replica set, or stateful set",
+    "usage": "kubectl autoscale deployment <deployment_name> --min=2 --max=10 --cpu-percent=80",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl create",
+    "description": "Create a resource from a file or stdin",
+    "usage": "kubectl create -f <filename>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl expose",
+    "description": "Expose a resource as a new Kubernetes service",
+    "usage": "kubectl expose deployment <deployment_name> --port=80 --type=LoadBalancer",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl taint",
+    "description": "Update the taints on one or more nodes",
+    "usage": "kubectl taint nodes <node_name> key=value:NoSchedule",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl label",
+    "description": "Update the labels on a resource",
+    "usage": "kubectl label pods <pod_name> key=value",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl annotate",
+    "description": "Update the annotations on a resource",
+    "usage": "kubectl annotate pods <pod_name> key=value",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl cordon",
+    "description": "Mark node as unschedulable",
+    "usage": "kubectl cordon <node_name>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl uncordon",
+    "description": "Mark node as schedulable",
+    "usage": "kubectl uncordon <node_name>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl drain",
+    "description": "Drain node in preparation for maintenance",
+    "usage": "kubectl drain <node_name>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl api-resources",
+    "description": "List the API resources supported by the server",
+    "usage": "kubectl api-resources",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl api-versions",
+    "description": "List the API versions supported by the server",
+    "usage": "kubectl api-versions",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl explain",
+    "description": "Get documentation for a resource",
+    "usage": "kubectl explain <resource>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl cluster-info",
+    "description": "Display cluster information",
+    "usage": "kubectl cluster-info",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get events",
+    "description": "List recent events in the cluster",
+    "usage": "kubectl get events",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get namespaces",
+    "description": "List all namespaces",
+    "usage": "kubectl get namespaces",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl create namespace",
+    "description": "Create a new namespace",
+    "usage": "kubectl create namespace <namespace_name>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl delete namespace",
+    "description": "Delete a namespace",
+    "usage": "kubectl delete namespace <namespace_name>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get services",
+    "description": "List all services",
+    "usage": "kubectl get services",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get deployments",
+    "description": "List all deployments",
+    "usage": "kubectl get deployments",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get configmaps",
+    "description": "List all configmaps",
+    "usage": "kubectl get configmaps",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get secrets",
+    "description": "List all secrets",
+    "usage": "kubectl get secrets",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get pv",
+    "description": "List all persistent volumes",
+    "usage": "kubectl get pv",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get pvc",
+    "description": "List all persistent volume claims",
+    "usage": "kubectl get pvc",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get storageclasses",
+    "description": "List all storage classes",
+    "usage": "kubectl get storageclasses",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get ingress",
+    "description": "List all ingress resources",
+    "usage": "kubectl get ingress",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get daemonsets",
+    "description": "List all daemon sets",
+    "usage": "kubectl get daemonsets",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get statefulsets",
+    "description": "List all stateful sets",
+    "usage": "kubectl get statefulsets",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get jobs",
+    "description": "List all jobs",
+    "usage": "kubectl get jobs",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get cronjobs",
+    "description": "List all cron jobs",
+    "usage": "kubectl get cronjobs",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get replicasets",
+    "description": "List all replica sets",
+    "usage": "kubectl get replicasets",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get endpoints",
+    "description": "List all endpoints",
+    "usage": "kubectl get endpoints",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get serviceaccounts",
+    "description": "List all service accounts",
+    "usage": "kubectl get serviceaccounts",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get roles",
+    "description": "List all roles",
+    "usage": "kubectl get roles",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get rolebindings",
+    "description": "List all role bindings",
+    "usage": "kubectl get rolebindings",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get clusterroles",
+    "description": "List all cluster roles",
+    "usage": "kubectl get clusterroles",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get clusterrolebindings",
+    "description": "List all cluster role bindings",
+    "usage": "kubectl get clusterrolebindings",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get networkpolicies",
+    "description": "List all network policies",
+    "usage": "kubectl get networkpolicies",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get podsecuritypolicies",
+    "description": "List all pod security policies",
+    "usage": "kubectl get podsecuritypolicies",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get priorityclasses",
+    "description": "List all priority classes",
+    "usage": "kubectl get priorityclasses",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get horizontalpodautoscalers",
+    "description": "List all horizontal pod autoscalers",
+    "usage": "kubectl get horizontalpodautoscalers",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get customresourcedefinitions",
+    "description": "List all custom resource definitions",
+    "usage": "kubectl get customresourcedefinitions",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get apiservices",
+    "description": "List all API services",
+    "usage": "kubectl get apiservices",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get certificatesigningrequests",
+    "description": "List all certificate signing requests",
+    "usage": "kubectl get certificatesigningrequests",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get leases",
+    "description": "List all leases",
+    "usage": "kubectl get leases",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get runtimeclasses",
+    "description": "List all runtime classes",
+    "usage": "kubectl get runtimeclasses",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get mutatingwebhookconfigurations",
+    "description": "List all mutating webhook configurations",
+    "usage": "kubectl get mutatingwebhookconfigurations",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get validatingwebhookconfigurations",
+    "description": "List all validating webhook configurations",
+    "usage": "kubectl get validatingwebhookconfigurations",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get controllerrevisions",
+    "description": "List all controller revisions",
+    "usage": "kubectl get controllerrevisions",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get endpointslices",
+    "description": "List all endpoint slices",
+    "usage": "kubectl get endpointslices",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get limitranges",
+    "description": "List all limit ranges",
+    "usage": "kubectl get limitranges",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get resourcequotas",
+    "description": "List all resource quotas",
+    "usage": "kubectl get resourcequotas",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get poddisruptionbudgets",
+    "description": "List all pod disruption budgets",
+    "usage": "kubectl get poddisruptionbudgets",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get podtemplates",
+    "description": "List all pod templates",
+    "usage": "kubectl get podtemplates",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "kubectl get replicationcontrollers",
+    "description": "List all replication controllers",
+    "usage": "kubectl get replicationcontrollers",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "grafana-server",
+    "description": "Start Grafana server",
+    "usage": "grafana-server",
+    "language": "Bash"
+  },
+  {
+    "name": "jupyter notebook",
+    "description": "Start Jupyter Notebook",
+    "usage": "jupyter notebook",
+    "language": "Python"
+  },
+  {
+    "name": "git",
+    "description": "Distributed version control system",
+    "usage": "git <command>",
+    "language": "Git"
+  },
+  {
+    "name": "svn",
+    "description": "Subversion version control system",
+    "usage": "svn <command>",
+    "language": "Svn"
+  },
+  {
+    "name": "pkill",
+    "description": "Kill processes by name",
+    "usage": "pkill <process_name>",
+    "language": "Bash"
+  },
+  {
+    "name": "pgrep",
+    "description": "Find process IDs by name",
+    "usage": "pgrep <process_name>",
+    "language": "Bash"
+  },
+  {
+    "name": "nice",
+    "description": "Set process priority",
+    "usage": "nice -n 10 <command>",
+    "language": "Bash"
+  },
+  {
+    "name": "dir",
+    "description": "List directory contents (Windows)",
+    "usage": "dir",
+    "language": "Powershell"
+  },
+  {
+    "name": "cls",
+    "description": "Clear screen (Windows)",
+    "usage": "cls",
+    "language": "Powershell"
+  },
+  {
+    "name": "Get-Process",
+    "description": "List running processes",
+    "usage": "Get-Process",
+    "language": "Powershell"
+  },
+  {
+    "name": "Stop-Process",
+    "description": "Stop a process",
+    "usage": "Stop-Process <name>",
+    "language": "Powershell"
+  },
+  {
+    "name": "gzip",
+    "description": "Compress files",
+    "usage": "gzip <file>",
+    "language": "Bash"
+  },
+  {
+    "name": "gunzip",
+    "description": "Decompress gzipped files",
+    "usage": "gunzip <file>.gz",
+    "language": "Bash"
+  },
+  {
+    "name": "deactivate",
+    "description": "Deactivate virtual environment",
+    "usage": "deactivate",
+    "language": "Bash"
+  },
+  {
+    "name": "disown",
+    "description": "Remove job from shell job table",
+    "usage": "disown",
+    "language": "Bash"
+  },
+  {
+    "name": "git bisect",
+    "description": "Find commit that broke something",
+    "usage": "git bisect start",
+    "language": "Git"
+  },
+  {
+    "name": "helm",
+    "description": "Kubernetes package manager",
+    "usage": "helm install <release> <chart>",
+    "language": "Kubernetes"
+  },
+  {
+    "name": "lshw",
+    "description": "List hardware configuration",
+    "usage": "lshw",
+    "language": "Bash"
+  },
+  {
+    "name": "lsblk",
+    "description": "List block devices",
+    "usage": "lsblk",
+    "language": "Bash"
+  },
+  {
+    "name": "pstree",
+    "description": "Display process tree",
+    "usage": "pstree",
+    "language": "Bash"
+  },
+  {
+    "name": "pmap",
+    "description": "Display process memory map",
+    "usage": "pmap <pid>",
+    "language": "Bash"
+  },
+  {
+    "name": "zip",
+    "description": "Compress files into zip archive",
+    "usage": "zip -r archive.zip <files>",
+    "language": "Bash"
+  },
+  {
+    "name": "unzip",
+    "description": "Extract zip archives",
+    "usage": "unzip archive.zip",
+    "language": "Bash"
+  },
+  {
+    "name": "nslookup",
+    "description": "Query DNS servers",
+    "usage": "nslookup example.com",
+    "language": "Bash"
+  },
+  {
+    "name": "iotop",
+    "description": "Monitor disk I/O usage",
+    "usage": "iotop",
+    "language": "Bash"
+  },
+  {
+    "name": "ip link",
+    "description": "Show network devices",
+    "usage": "ip link show",
+    "language": "Bash"
+  },
+  {
+    "name": "ip route",
+    "description": "Show routing table",
+    "usage": "ip route show",
+    "language": "Bash"
+  },
+  {
+    "name": "ip neigh",
+    "description": "Show neighbour objects",
+    "usage": "ip neigh show",
+    "language": "Bash"
+  },
+  {
+    "name": "ss -t",
+    "description": "Display TCP sockets",
+    "usage": "ss -t",
+    "language": "Bash"
+  },
+  {
+    "name": "ss -u",
+    "description": "Display UDP sockets",
+    "usage": "ss -u",
+    "language": "Bash"
+  },
+  {
+    "name": "ss -l",
+    "description": "Display listening sockets",
+    "usage": "ss -l",
+    "language": "Bash"
+  }
+  ,{
+    "name": "ssh local port forward",
+    "description": "Forward a local port to a remote host/port",
+    "usage": "ssh -L <local_port>:<remote_host>:<remote_port> <user>@<host>",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh remote port forward",
+    "description": "Forward a remote port to a local host/port",
+    "usage": "ssh -R <remote_port>:<local_host>:<local_port> <user>@<host>",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh dynamic forward",
+    "description": "Setup a SOCKS proxy (Dynamic forwarding)",
+    "usage": "ssh -D <port> <user>@<host>",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh-add",
+    "description": "Add a private key to the SSH agent",
+    "usage": "ssh-add ~/.ssh/<key_file>",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh-add list",
+    "description": "List keys currently in the SSH agent",
+    "usage": "ssh-add -l",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh-agent bash",
+    "description": "Start the SSH agent in a new shell",
+    "usage": "ssh-agent bash",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh identity",
+    "description": "Connect using a specific identity (private key) file",
+    "usage": "ssh -i ~/.ssh/<key_file> <user>@<host>",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh verbose",
+    "description": "Connect with verbose output (debugging)",
+    "usage": "ssh -v <user>@<host>",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh port",
+    "description": "Connect via a specific SSH port",
+    "usage": "ssh -p <port> <user>@<host>",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh remote command",
+    "description": "Execute a command on a remote host",
+    "usage": "ssh <user>@<host> '<command>'",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh-copy-id specific",
+    "description": "Copy a specific public key to a remote host",
+    "usage": "ssh-copy-id -i ~/.ssh/<key_file>.pub <user>@<host>",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh interactive tty",
+    "description": "Force TTY for interactive commands remotely",
+    "usage": "ssh -t <user>@<host> '<command_or_screen>'",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh agent forward",
+    "description": "Forward SSH agent to a remote host (danger!)",
+    "usage": "ssh -A <user>@<host>",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh X11 forward",
+    "description": "Forward X11 for remote GUI applications",
+    "usage": "ssh -X <user>@<host>",
+    "language": "SSH"
+  },
+  {
+    "name": "ssh X11 trusted",
+    "description": "Trusted X11 forwarding (more permissive)",
+    "usage": "ssh -Y <user>@<host>",
+    "language": "SSH"
+  },
+  {
+    "name": "git force ssh",
+    "description": "Force Git to use SSH instead of HTTPS globally",
+    "usage": "git config --global url.\"git@github.com:\".insteadOf \"https://github.com/\"",
+    "language": "Git"
+  }
+]

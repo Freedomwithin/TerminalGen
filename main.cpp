@@ -2,15 +2,29 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib> // for getenv
+#include <filesystem> // for smarter pathing
+
+namespace fs = std::filesystem;
 
 int main(int argc, char* argv[]) {
     // Determine data path
     std::string dataPath = "data/commands.json";
 
-    // Check environment variable
+    // 1. Check environment variable
     const char* envPath = std::getenv("TERMINAL_GEN_DATA");
     if (envPath) {
         dataPath = envPath;
+    } else {
+        // 2. If default doesn't exist, check relative to executable
+        if (!fs::exists(dataPath)) {
+            try {
+                fs::path exePath = fs::canonical(fs::path(argv[0]).parent_path());
+                fs::path potentialPath = exePath / "data" / "commands.json";
+                if (fs::exists(potentialPath)) {
+                    dataPath = potentialPath.string();
+                }
+            } catch (...) {}
+        }
     }
 
     // Parse CLI arguments

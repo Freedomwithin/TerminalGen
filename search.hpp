@@ -11,12 +11,14 @@ public:
     std::string Description;
     std::string Usage;
     std::string Language;
+    std::string Keywords;
 
-    // Pre-computed lowercase fields for efficiency (ignored in JSON output)
+    // Pre-computed lowercase fields for efficiency
     std::string NameLower;
     std::string DescriptionLower;
     std::string UsageLower;
     std::string LanguageLower;
+    std::string KeywordsLower;
 };
 
 inline void to_json(json& j, const CommandResult& c) {
@@ -24,7 +26,8 @@ inline void to_json(json& j, const CommandResult& c) {
         {"name", c.Name},
         {"description", c.Description},
         {"usage", c.Usage},
-        {"language", c.Language}
+        {"language", c.Language},
+        {"keywords", c.Keywords}
     };
 }
 
@@ -36,6 +39,11 @@ inline void from_json(const json& j, CommandResult& c) {
         j.at("language").get_to(c.Language);
     else
         c.Language = "Unknown";
+    
+    if (j.contains("keywords"))
+        j.at("keywords").get_to(c.Keywords);
+    else
+        c.Keywords = "";
 }
 
 class ICommandRepository {

@@ -9,35 +9,46 @@ app = Flask(__name__)
 def run_search_cli(query_args):
     """Executes the C++ CLI and returns parsed JSON."""
     try:
-        # Use -- to separate flags from the query, preventing injection of flags
-        # Use shell=False to prevent shell injection (default, but explicit for safety/linting)
-        # Use shlex.quote to satisfy security tools (C++ CLI strips quotes)
-        safe_args = [shlex.quote(arg) for arg in query_args]
-        cmd = ["./terminal_commands", "--"] + safe_args
-        result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
+        # Move to the script's directory for the command execution
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        cli_exe = os.path.join(script_dir, "terminal_commands")
+
+        # Don't quote if it's a list for subprocess.run; subprocess handles it safely.
+        # But we still use -- to separate flags from the query.
+        cmd = [cli_exe, "--"] + query_args
+        result = subprocess.run(cmd, capture_output=True, text=True, shell=False, cwd=script_dir)
         if result.returncode != 0:
-            print(f"CLI Error: {result.stderr}")
             return []
         return json.loads(result.stdout)
     except Exception as e:
-        print(f"Execution Error: {e}")
         return []
+
 
 @app.route('/')
 def index():
-    # Load all commands via CLI for the initial view
-    commands = run_search_cli(["list"])
-    return render_template('index.html', commands=commands)
+    return render_template('index.html')
 
 @app.route('/search')
 def search():
     query = request.args.get('q', '').strip()
+    # If no query, return 'list' for the initial load
     if not query:
-        return jsonify([])
-
-    # Use CLI for search
-    results = run_search_cli([query])
+        results = run_search_cli(["list"])
+    else:
+        results = run_search_cli([query])
     return jsonify(results)
+
+@app.route('/cli')
+def run_cli_route():
+    query = request.args.get('q', '').strip()
+    if not query:
+        return jsonify({"output": "No query provided"})
+    
+    # Run the search CLI and return the raw first match as a 'simulated' execution
+    results = run_search_cli([query])
+    if results:
+        return jsonify({"output": f"Executing: {results[0]['usage']}\n\n{results[0]['description']}"})
+    return jsonify({"output": "Command not found in neural matrix"})
 
 if __name__ == '__main__':
     os.makedirs('templates', exist_ok=True)
